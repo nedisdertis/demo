@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A Botica São Jorge</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff;
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding-top: 60px;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #c7af75;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 14px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: #ffd54f;
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      border-bottom: 1px solid #eee;
+    }
+    header img {
+      height: 300px;
+      max-width: 100%;
+      object-fit: contain;
+    }
+    header p {
+      font-style: italic;
+      color: #555;
+      font-size: 1.2rem;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    section {
+      margin-bottom: 60px;
+    }
+    h2 {
+      color: #c7af75;
+      font-weight: 700;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #c7af75;
+      padding-bottom: 8px;
+      margin-bottom: 25px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 24px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 6px 14px rgba(184,134,11,0.3);
+    }
+    .card h3 {
+      color: #8b6c00;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .btn-cart {
+      background: #25D366;
+      color: #fff;
+      font-weight: 700;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-cart:hover {
+      background: #128c34;
+    }
+    .cart-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 999;
+    }
+    .cart-modal {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      padding: 16px;
+      max-width: 300px;
+      z-index: 1000;
+    }
+    .cart-modal ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px 0;
+    }
+    .cart-modal ul li {
+      border-bottom: 1px solid #eee;
+      padding: 6px 0;
+    }
+    .btn-whatsapp {
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .btn-whatsapp:hover {
+      background: #128c34;
+    }
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.9rem;
+      color: #777;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-links">
+      <a href="#inicio">Início</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#contactos">Contactos</a>
+      <a href="#horario">Horário</a>
+    </div>
+  </nav>
+
+  <header id="inicio">
+    <img src="logotipo.png" alt="Logotipo da Botica São Jorge" />
+    <p>Clínica de terapias integrativas e holísticas, energias naturais e espaço de estética e bem-estar.</p>
+  </header>
+
+  <main>
+    <section id="produtos">
+      <h2>Produtos</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Suplementos Alimentares</h3>
+          <p>Para reforçar a sua saúde e bem-estar.</p>
+          <button class="btn-cart" onclick="addToCart('Suplementos Alimentares')">Adicionar</button>
+        </div>
+        <div class="card">
+          <h3>Plantas Medicinais</h3>
+          <p>Infusões e extratos naturais.</p>
+          <button class="btn-cart" onclick="addToCart('Plantas Medicinais')">Adicionar</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button class="cart-button" onclick="toggleCart()">🛒</button>
+  <div class="cart-modal" id="cartModal">
+    <strong>Carrinho:</strong>
+    <ul id="cartList"></ul>
+    <button class="btn-whatsapp" onclick="checkoutWhatsApp()">Finalizar Compra</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 A Botica São Jorge. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const cart = [];
+
+    function addToCart(item) {
+      cart.push(item);
+      updateCartView();
+      document.getElementById("cartModal").style.display = "block";
+    }
+
+    function toggleCart() {
+      const modal = document.getElementById("cartModal");
+      modal.style.display = modal.style.display === "block" ? "none" : "block";
+    }
+
+    function updateCartView() {
+      const list = document.getElementById("cartList");
+      list.innerHTML = "";
+      cart.forEach(item => {
+        const li = document.createElement("li");
+        li.textContent = item;
+        list.appendChild(li);
+      });
+    }
+
+    function checkoutWhatsApp() {
+      if (cart.length === 0) return alert("Carrinho vazio!");
+      const message = `Olá! Gostaria de comprar:\n` + cart.map(i => `- ${i}`).join("\n");
+      const url = `https://wa.me/351936806335?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A Botica São Jorge</title>
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff;
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding-top: 60px;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #c7af75;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      margin: 0 14px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover {
+      color: #ffd54f;
+    }
+    header {
+      text-align: center;
+      padding: 60px 20px 40px;
+      border-bottom: 1px solid #eee;
+    }
+    header img {
+      height: 300px;
+      margin-bottom: 0px;
+    }
+    header h1 {
+      color: #c7af75;
+      font-weight: 700;
+      font-size: 2.8rem;
+      margin-bottom: 0.2em;
+    }
+    header p {
+      font-style: italic;
+      color: #555;
+      font-size: 1.2rem;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    section {
+      margin-bottom: 60px;
+    }
+    h2 {
+      color: #c7af75;
+      font-weight: 700;
+      font-size: 1.8rem;
+      border-bottom: 2px solid #c7af75;
+      padding-bottom: 8px;
+      margin-bottom: 25px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 24px;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+    }
+    .card:hover {
+      box-shadow: 0 6px 14px rgba(184,134,11,0.3);
+    }
+    .card h3 {
+      color: #8b6c00;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .card p {
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      padding: 10px 18px;
+      border-radius: 5px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      transition: background 0.3s ease;
+    }
+    .btn-whatsapp img {
+      height: 18px;
+      width: 18px;
+    }
+    .btn-whatsapp:hover {
+      background: #128c34;
+    }
+    .info-list p {
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+    .info-list strong {
+      color: #c7af75;
+    }
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.9rem;
+      color: #777;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-links">
+    <a href="#inicio">Início</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#contactos">Contactos</a>
+    <a href="#horario">Horário</a>
+  </div>
+  <div style="margin-left: 20px;">
+    <input type="text" id="searchBox" placeholder="Pesquisar..." style="padding: 6px; border: none; border-radius: 4px;" oninput="searchPage()">
+  </div>
+</nav>
+
+<header id="inicio">
+  <img src="logotipo.png" alt="Logotipo da Botica São Jorge" />
+  <p>Clínica de terapias integrativas e holísticas, energias naturais e espaço de estética e bem-estar.</p>
+</header>
+
+<main>
+  <!-- Produtos -->
+  <section id="produtos">
+    <h2>Produtos</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Suplementos Alimentares</h3>
+        <img src="suplementos.jpg" alt="Imagem de suplementos" style="max-width: 50%; height: auto; margin-bottom: 5px; border-radius: 6px;" />
+        <p>Para reforçar a sua saúde e bem-estar.</p>
+        <a class="btn-whatsapp" target="_blank" href="https://wa.me/351218009507?text=Olá!%20Gostaria%20de%20informações%20sobre%20suplementos.">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"> Comprar
+        </a>
+      </div>
+      <div class="card">
+        <h3>Plantas Medicinais</h3>
+        <img src="plantas.jpg" alt="Imagem de suplementos" style="max-width: 50%; height: auto; margin-bottom: 5px; border-radius: 6px;" />
+        <p>Infusões e extratos naturais.</p>
+        <a class="btn-whatsapp" target="_blank" href="https://wa.me/351218009507?text=Olá!%20Gostaria%20de%20informações%20sobre%20plantas%20medicinais.">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"> Comprar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Serviços -->
+  <section id="servicos">
+    <h2>Serviços</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Consultas de Naturopatia</h3>
+        <p>Planos personalizados com abordagem natural.</p>
+        <a class="btn-whatsapp" target="_blank" href="https://wa.me/351218009507?text=Gostaria%20de%20marcar%20uma%20consulta%20de%20naturopatia.">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"> Marcar
+        </a>
+      </div>
+      <div class="card">
+        <h3>Workshops</h3>
+        <p>Aprenda práticas naturais de bem-estar.</p>
+        <a class="btn-whatsapp" target="_blank" href="https://wa.me/351218009507?text=Quero%20informações%20sobre%20workshops.">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"> Marcar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contactos -->
+  <section id="contactos">
+    <h2>Contactos</h2>
+    <div class="info-list">
+      <p><strong>Morada:</strong> Rua José Isidro dos Santos 1-lj A, 2625-087 Póvoa de Santa Iria</p>
+      <p><strong>Telefone:</strong> <a href="tel:+351218009507" style="color:#c7af75;">218 009 507</a></p>
+      <p><strong>Email:</strong> <a href="mailto:geral@aboticasaojorge.pt" style="color:#c7af75;">geral@aboticasaojorge.pt</a></p>
+      <p><strong>Facebook:</strong> <a href="https://www.facebook.com/aboticasaojorge" target="_blank" style="color:#c7af75;">@aboticasaojorge</a></p>
+      <p><strong>WhatsApp:</strong> <a href="https://wa.me/351218009507" target="_blank" style="color:#25D366;">Falar agora</a></p>
+    </div>
+  </section>
+
+  <!-- Horário -->
+  <section id="horario">
+    <h2>Horário</h2>
+    <div class="info-list">
+      <p><strong>Seg. a Sex.:</strong> 09:00 – 19:00</p>
+      <p><strong>Sábado:</strong> 09:00 – 13:00</p>
+      <p><strong>Domingo:</strong> Encerrado</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 A Botica São Jorge. Todos os direitos reservados.</p>
+</footer>
+
+<script>
+  function searchPage() {
+    const searchTerm = document.getElementById("searchBox").value.toLowerCase();
+    const elements = document.querySelectorAll("main, header, footer");
+
+    // Limpa destaques anteriores
+    document.querySelectorAll(".highlight").forEach(el => {
+      el.outerHTML = el.innerText;
+    });
+
+    if (searchTerm.length < 2) return;
+
+    elements.forEach(el => {
+      const regex = new RegExp(`(${searchTerm})`, 'gi');
+      el.innerHTML = el.innerHTML.replace(regex, '<span class="highlight">$1</span>');
+    });
+  }
+</script>
+
+<style>
+  .highlight {
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+  }
+</style>
+</body>
+</html>

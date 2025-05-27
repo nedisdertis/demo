@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A Botica São Jorge</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #fff;
+      color: #333;
+      margin: 0;
+      padding-top: 60px;
+      user-select: none;
+    }
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #c7af75;
+      padding: 10px 0;
+      text-align: center;
+      z-index: 1000;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    nav a:hover {
+      color: #ffd54f;
+    }
+    header {
+      text-align: center;
+      padding: 40px 20px 20px;
+      border-bottom: 1px solid #eee;
+    }
+    header img {
+      max-width: 100%;
+      height: 300px;
+      object-fit: contain;
+    }
+    header h1 {
+      color: #c7af75;
+      margin: 10px 0 5px;
+      font-weight: 700;
+      font-size: 2.8rem;
+    }
+    header p {
+      font-style: italic;
+      color: #555;
+      font-size: 1.2rem;
+      margin: 0;
+    }
+    main {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    section {
+      margin-bottom: 60px;
+    }
+    h2 {
+      color: #c7af75;
+      border-bottom: 2px solid #c7af75;
+      padding-bottom: 8px;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 24px;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: box-shadow 0.3s ease;
+      background: #fff;
+    }
+    .card:hover {
+      box-shadow: 0 6px 14px rgba(184,134,11,0.3);
+    }
+    .card h3 {
+      color: #8b6c00;
+      margin-bottom: 10px;
+    }
+    .card p {
+      color: #555;
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+    }
+    button.btn-cart {
+      background-color: #c7af75;
+      border: none;
+      color: white;
+      font-weight: 700;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+    button.btn-cart:hover {
+      background-color: #a38946;
+    }
+    .cart-button {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #c7af75;
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      border-radius: 50%;
+      width: 55px;
+      height: 55px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      z-index: 1100;
+    }
+    #cart-count {
+      background: #a38946;
+      border-radius: 50%;
+      padding: 2px 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      color: white;
+      user-select: none;
+    }
+    .cart-modal {
+      position: fixed;
+      bottom: 90px;
+      right: 25px;
+      width: 320px;
+      max-height: 400px;
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      padding: 20px;
+      overflow-y: auto;
+      display: none;
+      z-index: 1100;
+    }
+    .cart-modal strong {
+      display: block;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+      color: #c7af75;
+    }
+    #cartList {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #cartList li {
+      margin-bottom: 10px;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1rem;
+    }
+    .cart-remove {
+      background: #e74c3c;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+      font-size: 0.9rem;
+      padding: 3px 7px;
+      margin-left: 10px;
+      user-select: none;
+    }
+    .total-price {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-top: 15px;
+      text-align: right;
+      color: #555;
+    }
+    .btn-whatsapp {
+      margin-top: 20px;
+      width: 100%;
+      background: #25D366;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 6px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    .btn-whatsapp:hover {
+      background: #1ebe5b;
+    }
+    footer {
+      text-align: center;
+      padding: 30px 10px;
+      border-top: 1px solid #eee;
+      color: #777;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-links">
+      <a href="#produtos">Produtos</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contactos">Contactos</a>
+    </div>
+  </nav>
+
+  <header>
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80" alt="A Botica São Jorge" />
+    <h1>A Botica São Jorge</h1>
+    <p>Produtos naturais para a sua saúde e bem-estar</p>
+  </header>
+
+  <main>
+    <section id="produtos">
+      <h2>Produtos</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Suplementos Alimentares</h3>
+          <p>Para reforçar a sua saúde e bem-estar.</p>
+          <p>Preço: 15€</p>
+          <button class="btn-cart" onclick="addToCart('Suplementos Alimentares', 15)">Adicionar</button>
+        </div>
+        <div class="card">
+          <h3>Plantas Medicinais</h3>
+          <p>Infusões e extratos naturais.</p>
+          <p>Preço: 10€</p>
+          <button class="btn-cart" onclick="addToCart('Plantas Medicinais', 10)">Adicionar</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <h2>Sobre Nós</h2>
+      <p>A Botica São Jorge é dedicada a oferecer produtos naturais de qualidade para melhorar sua saúde.</p>
+    </section>
+
+    <section id="contactos">
+      <h2>Contactos</h2>
+      <p>Email: info@aboticasaojorge.pt</p>
+      <p>Telefone: +351 123 456 789</p>
+    </section>
+  </main>
+
+  <button class="cart-button" onclick="toggleCart()">
+    🛒 <span id="cart-count">0</span>
+  </button>
+
+  <div class="cart-modal" id="cartModal">
+    <strong>Carrinho</strong>
+    <ul id="cartList"></ul>
+    <div class="total-price" id="cartTotal">Total: €0</div>
+    <button class="btn-whatsapp" onclick="checkoutWhatsApp()">Finalizar Compra</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 A Botica São Jorge. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const cart = {};
+
+    function addToCart(item, price) {
+      if(cart[item]) {
+        cart[item].qty++;
+      } else {
+        cart[item] = { qty: 1, price: price };
+      }
+      updateCartView();
+      document.getElementById("cartModal").style.display = "block";
+    }
+
+    function removeFromCart(item) {
+      if(cart[item]) {
+        cart[item].qty--;
+        if(cart[item].qty <= 0) {
+          delete cart[item];
+        }
+        updateCartView();
+      }
+    }
+
+    function toggleCart() {
+      const modal = document.getElementById("cartModal");
+      modal.style.display = modal.style.display === "block" ? "none" : "block";
+    }
+
+    function updateCartView() {
+      const list = document.getElementById("cartList");
+      list.innerHTML = "";
+      let totalItems = 0;
+      let totalPrice = 0;
+
+      for(let item in cart) {
+        const li = document.createElement("li");
+        li.textContent = `${item} x${cart[item].qty} = €${(cart[item].qty * cart[item].price).toFixed(2)}`;
+        
+        const btnRemove = document.createElement("button");
+        btnRemove.textContent = "x";
+        btnRemove.className = "cart-remove";
+        btnRemove.onclick = () => removeFromCart(item);
+
+        li.appendChild(btnRemove);
+        list.appendChild(li);
+
+        totalItems += cart[item].qty;
+        totalPrice += cart[item].qty * cart[item].price;
+      }
+
+      document.getElementById("cart-count").textContent = totalItems;
+      document.getElementById("cartTotal").textContent = `Total: €${totalPrice.toFixed(2)}`;
+    }
+
+    function checkoutWhatsApp() {
+      const items = Object.entries(cart);
+      if(items.length === 0) {
+        alert("Carrinho vazio!");
+        return;
+      }
+      let total = 0;
+      let message = "Olá! Gostaria de comprar:\n";
+      items.forEach(([item, data]) => {
+        message += `- ${item} x${data.qty} = €${(data.qty * data.price).toFixed(2)}\n`;
+        total += data.qty * data.price;
+      });
+      message += `Total: €${total.toFixed(2)}`;
+      const url = `https://wa.me/351936806335?text=${encodeURIComponent(message)}`;
+      window.open(url, "_blank");
+    }
+  </script>
+</body>
+</html>

@@ -9,6 +9,10 @@
       box-sizing: border-box;
     }
     body {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #fff;
       color: #333;
@@ -363,6 +367,12 @@
     });
   }
 </script>
-
+<script>
+  document.onkeydown = function (e) {
+    if (e.ctrlKey && (e.key === 'u' || e.key === 'c' || e.key === 's' || e.key === 'a')) {
+      return false;
+    }
+  };
+</script>
 </body>
 </html>

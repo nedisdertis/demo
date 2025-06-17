@@ -6,7 +6,9 @@
   <title>A Botica São Jorge - Início</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #fff;
@@ -22,7 +24,6 @@
       background: #c7af75;
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       padding: 10px 0;
       z-index: 1000;
     }
@@ -34,32 +35,24 @@
       font-size: 1rem;
       transition: color 0.3s ease;
     }
-    .nav-links a:hover { color: #ffd54f; }
-
+    .nav-links a:hover {
+      color: #ffd54f;
+    }
     header {
       text-align: center;
-      padding: 20px;
+      padding: 60px 20px 40px;
       border-bottom: 1px solid #eee;
     }
-    .header-container {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .header-container img {
-      height: 80px;
+    header img {
+      height: 300px;
+      max-width: 100%;
       object-fit: contain;
-      max-width: 100%;
     }
-    .header-container video {
-      max-width: 100%;
-      border-radius: 8px;
+    header p {
+      font-style: italic;
+      color: #555;
+      font-size: 1.2rem;
     }
-
     main {
       max-width: 900px;
       margin: 40px auto;
@@ -68,14 +61,14 @@
     section {
       margin-bottom: 60px;
     }
-    h2, h3 {
+    h2 {
       color: #c7af75;
       font-weight: 700;
+      font-size: 1.8rem;
       border-bottom: 2px solid #c7af75;
       padding-bottom: 8px;
       margin-bottom: 25px;
     }
-
     .promo, .novidades, .equipa, .destaques, .contactos, .feedback {
       background: #f9f7ec;
       border: 1px solid #c7af75;
@@ -83,30 +76,25 @@
       padding: 15px 20px;
       margin-bottom: 40px;
     }
-
-    .promo img, .novidades img, .destaques img, .equipa img {
-      width: 100%;
-      max-width: 200px;
-      height: auto;
-      border-radius: 8px;
-      object-fit: cover;
+    .promo h3, .novidades h3, .equipa h3, .destaques h3, .contactos h3, .feedback h3 {
+      color: #8b6c00;
+      margin-bottom: 10px;
+      font-weight: 700;
     }
-
-    .img-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
+    .social-links a {
+      margin-right: 15px;
+      text-decoration: none;
     }
-
     .newsletter-sugestoes {
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
       justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 60px;
     }
     .newsletter, .sugestoes {
-      flex: 1 1 300px;
+      flex: 1;
+      min-width: 280px;
       padding: 15px 20px;
       border: 1px solid #c7af75;
       border-radius: 8px;
@@ -118,7 +106,7 @@
       font-weight: 600;
       color: #8b6c00;
     }
-    input[type="text"], input[type="email"], textarea {
+    input[type="text"], textarea {
       width: 100%;
       padding: 8px;
       border-radius: 5px;
@@ -127,24 +115,19 @@
       font-size: 1rem;
       resize: vertical;
     }
-    .btn-whatsapp {
-      background-color: #25d366;
+    .btn-submit {
+      background: #25D366;
+      color: #fff;
       border: none;
-      border-radius: 4px;
-      color: white;
-      font-weight: 600;
-      font-size: 16px;
-      padding: 10px 16px;
+      padding: 10px 15px;
+      font-weight: 700;
+      border-radius: 5px;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 0.3s ease;
       width: 100%;
     }
-    .btn-whatsapp:hover { background-color: #128c34; }
-    .btn-whatsapp svg { margin-left: 8px; }
-
+    .btn-submit:hover {
+      background: #128c34;
+    }
     footer {
       text-align: center;
       padding: 20px 10px;
@@ -162,10 +145,29 @@
       margin-bottom: 15px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     }
+    .feedback .review p {
+      margin: 6px 0;
+    }
     .stars {
       color: #ffd54f;
       margin-left: 10px;
       font-size: 1.1rem;
+      display: inline-block;
+      vertical-align: middle;
+      position: relative;
+    }
+    /* Animação estrela */
+    .stars i {
+      transition: color 0.3s ease;
+    }
+    .stars i.filled {
+      color: #ffd54f;
+      animation: starFlash 1.2s ease forwards;
+    }
+    @keyframes starFlash {
+      0% { color: #ccc; }
+      50% { color: #ffd54f; }
+      100% { color: #ffd54f; }
     }
     .feedback .google-link {
       margin-top: 15px;
@@ -176,14 +178,20 @@
       font-weight: 700;
       text-decoration: none;
     }
+    .feedback .google-link a:hover {
+      text-decoration: underline;
+    }
 
     /* Responsivo */
-    @media (max-width: 768px) {
-      nav { font-size: 0.9rem; flex-direction: column; }
-      .header-container { flex-direction: column; }
-      .promo img, .novidades img, .destaques img, .equipa img {
-        max-width: 100%;
-        height: auto;
+    @media (max-width: 700px) {
+      .newsletter-sugestoes {
+        flex-direction: column;
+      }
+      nav {
+        font-size: 0.9rem;
+      }
+      header img {
+        height: 200px;
       }
     }
   </style>
@@ -191,7 +199,7 @@
 <body>
   <nav>
     <div class="nav-links">
-      <a href="#">Início</a>
+      <a href="index.html">Início</a>
       <a href="produtos-corpo.html">Corpo</a>
       <a href="produtos-mente.html">Mente</a>
       <a href="produtos-alma.html">Alma</a>
@@ -200,78 +208,279 @@
     </div>
   </nav>
 
-  <header>
-    <div class="header-container">
-      <img src="logotipo.png" alt="Logotipo da Botica São Jorge" />
-      <video src="video-intro.mp4" controls autoplay muted loop playsinline></video>
+<header style="padding: 20px; border-bottom: 1px solid #eee;">
+  <div style="display: flex; align-items: flex-start; justify-content: center; gap: 10px; margin: 0 auto; max-width: 1000px;">
+    
+    <!-- Logotipo à esquerda -->
+    <div style="flex: 0 0 auto;">
+      <img src="logotipo.png" alt="Logotipo da Botica São Jorge" style="height: 80px; object-fit: contain; display: block;" />
     </div>
-  </header>
 
-  <main>
-    <section class="promo">
-      <h3>Promoções e Campanhas em Vigor</h3>
-      <div class="img-grid">
-        <a href="#"><img src="promo-instagram.jpg" alt="Promoção 1" /></a>
-        <a href="#"><img src="promo-instagram2.jpg" alt="Promoção 2" /></a>
-        <a href="#"><img src="promo-instagram3.jpg" alt="Promoção 3" /></a>
-      </div>
-    </section>
+    <!-- Vídeo à direita -->
+    <div style="flex: 0 1 auto;">
+      <video 
+        src="video-intro.mp4" 
+        width="560" 
+        height="315" 
+        controls 
+        autoplay 
+        muted 
+        loop 
+        playsinline
+        style="max-width: 100%; border-radius: 8px; display: block;"
+      >
+        O seu navegador não suporta o elemento de vídeo.
+      </video>
+    </div>
 
-    <section class="novidades">
-      <h3>Novidades</h3>
-      <div class="img-grid">
-        <a href="#"><img src="novidades-instagram.jpg" alt="Novidade 1" /></a>
-        <a href="#"><img src="novidades-instagram2.jpg" alt="Novidade 2" /></a>
-        <a href="#"><img src="novidades-instagram3.jpg" alt="Novidade 3" /></a>
-      </div>
-    </section>
+  </div>
+</header>
 
-    <section class="equipa" style="text-align: center;">
-      <img src="equipa.jpg" alt="Equipa" />
-    </section>
+<main>
+  <section class="promo" style="text-align: center;">
+    <h3>Promoções e Campanhas em Vigor</h3>
+    <div style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
+      <a href="https://www.instagram.com/clinicas.jorge/p/DK4LWl3i5sa/" target="_blank" rel="noopener" title="Promoção no Instagram">
+        <img src="promo-instagram.jpg" alt="Promoção da Clínica Jorge no Instagram" 
+             style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+      </a>
+      <a href="https://www.instagram.com/p/DKxZ-kggHFp/" target="_blank" rel="noopener" title="Promoção no Instagram">
+        <img src="promo-instagram2.jpg" alt="Promoção da Clínica Jorge no Instagram" 
+             style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+      </a>
+      <a href="https://www.instagram.com/p/DK9jiXQiGy5/" target="_blank" rel="noopener" title="Promoção no Instagram">
+        <img src="promo-instagram3.jpg" alt="Promoção da Clínica Jorge no Instagram" 
+             style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+      </a>
+    </div>
+  </section>
 
-    <section class="destaques" id="destaques">
-      <h3>Destaques</h3>
-      <div class="img-grid">
-        <img src="destaque.jpg" alt="Destaque 1" />
-        <img src="destaque2.jpg" alt="Destaque 2" />
-        <img src="destaque3.jpg" alt="Destaque 3" />
-      </div>
-    </section>
+  <section class="novidades" style="text-align: center;">
+    <h3>Novidades</h3>
+    <div style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
+      <a href="https://www.instagram.com/p/DKjd7HvCSQv/" target="_blank" rel="noopener" title="Promoção no Instagram">
+        <img src="novidades-instagram.jpg" alt="Promoção da Clínica Jorge no Instagram" 
+             style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+      </a>
+      <a href="https://www.instagram.com/p/DKmjSiwizPU/" target="_blank" rel="noopener" title="Promoção no Instagram">
+        <img src="novidades-instagram2.jpg" alt="Promoção da Clínica Jorge no Instagram" 
+             style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+      </a>  
+      <a href="https://www.instagram.com/p/DKg1o13CVhJ/" target="_blank" rel="noopener" title="Promoção no Instagram">
+        <img src="novidades-instagram3.jpg" alt="Promoção da Clínica Jorge no Instagram" 
+             style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+      </a>
+    </div>
+  </section>
 
-    <section class="contactos" id="contactos" style="text-align: center;">
-      <h3>Contactos</h3>
-      <p>Telefone: <a href="tel:+351253678191" style="color:#c7af75;">+351 253 678 191</a></p>
-      <p>Email: <a href="mailto:info@aboticasaojorge.pt" style="color:#c7af75;">info@aboticasaojorge.pt</a></p>
-      <p>Morada: Rua da Saúde, 123, Braga, Portugal</p>
-      <div style="margin-top: 20px;">
-        <button class="btn-whatsapp" aria-label="Contactar por WhatsApp">
-          <i class="fab fa-whatsapp"></i> WhatsApp
-        </button>
-      </div>
-    </section>
+  <section class="equipa" style="text-align: center;">
+    <img src="equipa.jpg" alt="Equipa" 
+         style="width: 500px; height: 265px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+  </section>
 
-    <section class="newsletter-sugestoes">
-      <div class="newsletter">
-        <h3>Subscreva a Newsletter</h3>
-        <form>
-          <label for="emailNewsletter">Email:</label>
-          <input type="email" id="emailNewsletter" placeholder="exemplo@dominio.pt" required />
-          <button type="submit" class="btn-whatsapp">Subscrever</button>
-        </form>
-      </div>
-      <div class="sugestoes">
-        <h3>Sugestões</h3>
-        <form>
-          <label for="nomeSugestao">Nome:</label>
-          <input type="text" id="nomeSugestao" placeholder="Seu nome" required />
-          <label for="mensagemSugestao">Mensagem:</label>
-          <textarea id="mensagemSugestao" rows="4" placeholder="Escreva a sua sugestão" required></textarea>
-          <button type="submit" class="btn-whatsapp">Enviar</button>
-        </form>
-      </div>
-    </section>
-  </main>
+  <section class="destaques" id="destaques" style="text-align: center;">
+    <h3>Destaques</h3>
+    <div style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
+      <img src="destaque.jpg" 
+           style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+      <img src="destaque2.jpg" 
+           style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+      <img src="destaque3.jpg" 
+           style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+    </div>
+  </section>
+
+  <section class="contactos" id="contactos" style="text-align: center;">
+    <h3>Contactos</h3>
+    <p>Telefone: <a href="tel:+351253678191" style="color:#c7af75;">+351 253 678 191</a></p>
+    <p>Email: <a href="mailto:info@aboticasaojorge.pt" style="color:#c7af75;">info@aboticasaojorge.pt</a></p>
+    <p>Morada: Rua da Saúde, 123, Braga, Portugal</p>
+
+    <div style="margin-top: 20px;">
+      <button 
+        id="whatsappBtn" 
+        style="
+          background-color: #25D366; 
+          border: none; 
+          color: white; 
+          padding: 12px 24px; 
+          font-size: 1.1rem; 
+          font-weight: 700; 
+          border-radius: 30px;
+          cursor: pointer;
+          box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+        "
+        aria-label="Contactar por WhatsApp"
+      >
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </button>
+    </div>
+  </section>
+
+<section class="newsletter-sugestoes">
+  <div class="newsletter">
+    <h3>Subscreva a Newsletter</h3>
+    <form id="newsletterForm">
+      <label for="emailNewsletter">Email:</label>
+      <input
+        type="email"
+        id="emailNewsletter"
+        name="emailNewsletter"
+        placeholder="exemplo@dominio.pt"
+        required
+      />
+      <button type="submit" class="btn-whatsapp">
+        Subscrever
+        <!-- Ícone WhatsApp SVG -->
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+          width="18"
+          height="18"
+          fill="white"
+          style="margin-left: 8px;"
+        >
+          <path
+            d="M20.52 3.48A11.89 11.89 0 0012 0C5.372 0 0 5.372 0 12a11.9 11.9 0 001.664 6.098L0 24l5.942-1.555A11.908 11.908 0 0012 24c6.628 0 12-5.372 12-12a11.84 11.84 0 00-3.48-8.52zM12 21.8a9.807 9.807 0 01-5.174-1.522l-.37-.23-3.53.923.942-3.44-.246-.355A9.834 9.834 0 012.2 12c0-5.422 4.378-9.8 9.8-9.8 2.62 0 5.082 1.02 6.925 2.865a9.713 9.713 0 012.875 6.934c0 5.422-4.378 9.8-9.8 9.8zm5.415-7.51l-2.54-.738a.587.587 0 00-.553.148l-1.204 1.176a7.776 7.776 0 01-3.682-3.675l1.176-1.204a.582.582 0 00.148-.553l-.74-2.537a.587.587 0 00-.568-.402h-1.793a.583.583 0 00-.582.582c0 3.013 2.447 6.207 5.536 7.303a.58.58 0 00.642-.109l1.286-1.242a.584.584 0 00-.123-.91z"
+          />
+        </svg>
+      </button>
+    </form>
+  </div>
+
+  <div class="sugestoes">
+    <h3>Sugestões</h3>
+    <form id="sugestoesForm">
+      <label for="nomeSugestao">Nome:</label>
+      <input
+        type="text"
+        id="nomeSugestao"
+        name="nomeSugestao"
+        placeholder="Seu nome"
+        required
+      />
+      <label for="mensagemSugestao">Mensagem:</label>
+      <textarea
+        id="mensagemSugestao"
+        name="mensagemSugestao"
+        rows="4"
+        placeholder="Escreva a sua sugestão"
+        required
+      ></textarea>
+      <button type="submit" class="btn-whatsapp">
+        Enviar
+        <!-- Ícone WhatsApp SVG -->
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          focusable="false"
+          width="18"
+          height="18"
+          fill="white"
+          style="margin-left: 8px;"
+        >
+          <path
+            d="M20.52 3.48A11.89 11.89 0 0012 0C5.372 0 0 5.372 0 12a11.9 11.9 0 001.664 6.098L0 24l5.942-1.555A11.908 11.908 0 0012 24c6.628 0 12-5.372 12-12a11.84 11.84 0 00-3.48-8.52zM12 21.8a9.807 9.807 0 01-5.174-1.522l-.37-.23-3.53.923.942-3.44-.246-.355A9.834 9.834 0 012.2 12c0-5.422 4.378-9.8 9.8-9.8 2.62 0 5.082 1.02 6.925 2.865a9.713 9.713 0 012.875 6.934c0 5.422-4.378 9.8-9.8 9.8zm5.415-7.51l-2.54-.738a.587.587 0 00-.553.148l-1.204 1.176a7.776 7.776 0 01-3.682-3.675l1.176-1.204a.582.582 0 00.148-.553l-.74-2.537a.587.587 0 00-.568-.402h-1.793a.583.583 0 00-.582.582c0 3.013 2.447 6.207 5.536 7.303a.58.58 0 00.642-.109l1.286-1.242a.584.584 0 00-.123-.91z"
+          />
+        </svg>
+      </button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .btn-whatsapp {
+    background-color: #25d366;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 10px 16px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+  }
+  .btn-whatsapp:hover {
+    background-color: #1ebe57;
+  }
+  input,
+  textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 6px 0 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+  label {
+    font-weight: 600;
+    font-size: 14px;
+  }
+  .newsletter-sugestoes {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+  .newsletter,
+  .sugestoes {
+    flex: 1 1 300px;
+  }
+</style>
+
+<script>
+  const whatsappNumber = "351936806335"; // troca pelo teu número
+
+  function abrirWhatsApp(mensagem) {
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      mensagem
+    )}`;
+    window.open(url, "_blank");
+  }
+
+  document
+    .getElementById("newsletterForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      const email = event.target.emailNewsletter.value.trim();
+      if (!email) {
+        alert("Por favor, insira um email válido.");
+        return;
+      }
+      const mensagem = `Quero subscrever a newsletter.\nEmail: ${email}`;
+      abrirWhatsApp(mensagem);
+    });
+
+  document
+    .getElementById("sugestoesForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+      const nome = event.target.nomeSugestao.value.trim();
+      const mensagemSugestao = event.target.mensagemSugestao.value.trim();
+      if (!nome || !mensagemSugestao) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+      }
+      const mensagem = `Sugestão recebida:\nNome: ${nome}\nMensagem: ${mensagemSugestao}`;
+      abrirWhatsApp(mensagem);
+    });
+</script>
+
+
+
+  <section class="feedback">
+    <h3>Avaliações dos Clientes</h3>
+    <div id="reviewsContainer">
+      <p>A carregar avaliações...</p>
+    </div>
+  </section>
+</main>
+
 
 <footer>
 
@@ -292,5 +501,89 @@
   </a>
 </div>
 </footer>
+
+<script>
+  // WhatsApp botão
+  document.getElementById('whatsappBtn').addEventListener('click', function() {
+    const phone = '351936806335'; // Número internacional completo (com código do país)
+    const message = encodeURIComponent('Olá, gostaria de saber mais informações.');
+    const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
+    window.open(whatsappUrl, '_blank');
+  });
+
+  // Função para renderizar estrelas da avaliação
+  function renderStars(rating) {
+    const maxStars = 5;
+    let starsHTML = '';
+    for(let i = 1; i <= maxStars; i++) {
+      if(i <= rating) {
+        starsHTML += '<i class="fas fa-star filled"></i>';
+      } else {
+        starsHTML += '<i class="far fa-star"></i>';
+      }
+    }
+    return starsHTML;
+  }
+
+  // Mock dados de avaliações (exemplo)
+  const reviews = [
+    {
+      name: "João Silva",
+      rating: 5,
+      comment: "Serviço excelente e atendimento muito profissional!"
+    },
+    {
+      name: "Maria Santos",
+      rating: 4,
+      comment: "Produtos de alta qualidade e entrega rápida."
+    },
+    {
+      name: "Pedro Oliveira",
+      rating: 5,
+      comment: "Recomendo vivamente esta botica. Equipa muito atenciosa."
+    }
+  ];
+
+  // Renderizar avaliações
+  function displayReviews() {
+    const container = document.getElementById('reviewsContainer');
+    container.innerHTML = '';
+    if(reviews.length === 0) {
+      container.innerHTML = '<p>Não existem avaliações para mostrar.</p>';
+      return;
+    }
+    reviews.forEach(r => {
+      const div = document.createElement('div');
+      div.classList.add('review');
+      div.innerHTML = `
+        <p><strong>${r.name}</strong> <span class="stars">${renderStars(r.rating)}</span></p>
+        <p>"${r.comment}"</p>
+      `;
+      container.appendChild(div);
+    });
+
+    // Link para avaliações Google
+    const googleLink = document.createElement('div');
+    googleLink.classList.add('google-link');
+    googleLink.innerHTML = `<a href="https://www.google.com/search?sca_esv=80fe4e9e591dacc5&rlz=1C1GCEU_esES1096ES1096&tbm=lcl&sxsrf=AE3TifM55Wfvv-ljZXBxQKnH3_OjOQX3RQ:1750179507802&q=Clinica+S.Jorge+Cr%C3%ADticas&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDQ0MzMxNzUwMDMyNDc0MzQ1sdjAyPiKUdI5JzMvMzlRIVjPK78oPVXBuejw2hKgQPEiVtxyAAX1d5JTAAAA&rldimm=11166475006217161548&hl=pt-PT&sa=X&ved=2ahUKEwif_-ve9viNAxWsTaQEHbJSAnIQ9fQKegQILxAF&biw=1740&bih=820&dpr=1.1#lkt=LocalPoiReviews" target="_blank" rel="noopener" aria-label="Ver avaliações Google">Ver mais avaliações Google</a>`;
+    container.appendChild(googleLink);
+  }
+
+  displayReviews();
+
+  // Submissão dos formulários (exemplo simples)
+  document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Obrigado por subscrever a nossa newsletter!');
+    this.reset();
+  });
+
+  document.getElementById('sugestoesForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Mensagem enviada com sucesso! Obrigado pelo seu feedback.');
+    this.reset();
+  });
+</script>
+
 </body>
 </html>

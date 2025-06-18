@@ -39,14 +39,30 @@
       color: #ffd54f;
     }
     header {
-      text-align: center;
-      padding: 60px 20px 40px;
+      padding: 60px 20px 40px; /* Default desktop padding */
       border-bottom: 1px solid #eee;
+      text-align: center;
     }
-    header img {
-      height: 300px;
-      max-width: 100%;
+    /* Styles for the main flex container inside header */
+    header .header-content {
+      display: flex;
+      align-items: flex-start; /* Aligns items to the start of the cross-axis (top) */
+      justify-content: center; /* Centers items horizontally */
+      gap: 10px;
+      margin: 0 auto;
+      max-width: 1000px;
+    }
+    /* Styles for logo container and image */
+    .logo-container img {
+      height: 80px; /* Default desktop height */
       object-fit: contain;
+      display: block; /* Needed for margin: auto to center if container has specific width */
+    }
+    /* Styles for video container and video */
+    .video-container video {
+      max-width: 100%;
+      border-radius: 8px;
+      display: block; /* Ensures it behaves as a block element */
     }
     header p {
       font-style: italic;
@@ -169,17 +185,35 @@
       50% { color: #ffd54f; }
       100% { color: #ffd54f; }
     }
+    
+    /* Estilo para o link "Ver mais avaliações Google" */
     .feedback .google-link {
       margin-top: 15px;
-      text-align: right;
+      text-align: right; /* Alinha o link à direita */
     }
+
     .feedback .google-link a {
       color: #c7af75;
       font-weight: 700;
       text-decoration: none;
+      background-color: #fff; /* Fundo branco */
+      border: 1px solid #c7af75; /* Borda da cor principal */
+      padding: 8px 15px; /* Preenchimento */
+      border-radius: 20px; /* Cantos arredondados */
+      display: inline-flex; /* Para alinhar o ícone e o texto */
+      align-items: center; /* Alinha verticalmente */
+      gap: 8px; /* Espaço entre o ícone e o texto */
+      transition: all 0.3s ease; /* Transição suave */
     }
+
     .feedback .google-link a:hover {
-      text-decoration: underline;
+      background-color: #f0f0f0; /* Fundo levemente cinza ao passar o mouse */
+      color: #8b6c00; /* Cor do texto mais escura ao passar o mouse */
+      text-decoration: none;
+    }
+    .feedback .google-link a .fab.fa-google {
+      font-size: 1.1rem; /* Tamanho do ícone do Google */
+      color: #c7af75; /* Cor do ícone do Google */
     }
 
     /* Responsivo */
@@ -199,17 +233,18 @@
 
       /* Cabeçalho */
       header {
-        padding: 20px 10px;
+        padding: 20px 10px; /* Mobile padding */
       }
-      header > div { /* O div que contém o logo e o vídeo */
-        flex-direction: column;
-        align-items: center;
+      header .header-content { /* Targeting the flex container */
+        flex-direction: column; /* Stack logo and video vertically */
+        align-items: center; /* Center them horizontally in the column */
         gap: 20px;
       }
-      header img { /* Logotipo */
-        height: 60px;
+      .logo-container img { /* Logo image on mobile */
+        height: 60px; /* Mobile height */
+        margin: 0 auto; /* Ensure the image itself is centered within its (potentially centered) container */
       }
-      header video { /* Vídeo */
+      .video-container video { /* Vídeo on mobile */
         width: 100%;
         height: auto;
       }
@@ -253,6 +288,54 @@
         font-size: 1rem;
       }
     }
+
+    /* CSS ajustado para os botões do WhatsApp nos formulários */
+    .btn-whatsapp {
+      background-color: #25d366;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 10px 16px;
+      cursor: pointer;
+      display: inline-flex; /* Usa flexbox para alinhar conteúdo */
+      align-items: center; /* Alinha itens verticalmente no centro */
+      justify-content: center; /* Alinha itens horizontalmente no centro */
+      transition: background-color 0.3s ease;
+      width: 100%; /* Garante que o botão ocupe toda a largura disponível */
+    }
+    .btn-whatsapp:hover {
+      background-color: #1ebe57;
+    }
+    .btn-whatsapp .fab.fa-whatsapp { /* Estilo para o ícone Font Awesome dentro do botão */
+      margin-left: 8px; /* Adiciona espaço entre o texto e o ícone */
+      font-size: 18px; /* Define o tamanho do ícone */
+    }
+    input,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 6px 0 12px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    label {
+      font-weight: 600;
+      font-size: 14px;
+    }
+    .newsletter-sugestoes {
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+    }
+    .newsletter,
+    .sugestoes {
+      flex: 1 1 300px;
+    }
   </style>
 </head>
 <body>
@@ -267,29 +350,25 @@
     </div>
   </nav>
 
-<header style="padding: 20px; border-bottom: 1px solid #eee;">
-  <div style="display: flex; align-items: flex-start; justify-content: center; gap: 10px; margin: 0 auto; max-width: 1000px;">
-    
-    <div style="flex: 0 0 auto;">
-      <img src="logotipo.png" alt="Logotipo da Botica São Jorge" style="height: 80px; object-fit: contain; display: block;" />
+<header>
+  <div class="header-content"> <div class="logo-container">
+      <img src="logotipo.png" alt="Logotipo da Botica São Jorge" />
     </div>
 
-    <div style="flex: 0 1 auto;">
-      <video 
-        src="video-intro.mp4" 
-        width="560" 
-        height="315" 
-        controls 
-        autoplay 
-        muted 
-        loop 
+    <div class="video-container">
+      <video
+        src="video-intro.mp4"
+        width="560"
+        height="315"
+        controls
+        autoplay
+        muted
+        loop
         playsinline
-        style="max-width: 100%; border-radius: 8px; display: block;"
       >
         O seu navegador não suporta o elemento de vídeo.
       </video>
     </div>
-
   </div>
 </header>
 
@@ -298,15 +377,15 @@
     <h3>Promoções e Campanhas em Vigor</h3>
     <div style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
       <a href="https://www.instagram.com/clinicas.jorge/p/DK4LWl3i5sa/" target="_blank" rel="noopener" title="Promoção no Instagram">
-        <img src="promo-instagram.jpg" alt="Promoção da Clínica Jorge no Instagram" 
+        <img src="promo-instagram.jpg" alt="Promoção da Clínica Jorge no Instagram"
              style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
       </a>
       <a href="https://www.instagram.com/p/DKxZ-kggHFp/" target="_blank" rel="noopener" title="Promoção no Instagram">
-        <img src="promo-instagram2.jpg" alt="Promoção da Clínica Jorge no Instagram" 
+        <img src="promo-instagram2.jpg" alt="Promoção da Clínica Jorge no Instagram"
              style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
       </a>
       <a href="https://www.instagram.com/p/DK9jiXQiGy5/" target="_blank" rel="noopener" title="Promoção no Instagram">
-        <img src="promo-instagram3.jpg" alt="Promoção da Clínica Jorge no Instagram" 
+        <img src="promo-instagram3.jpg" alt="Promoção da Clínica Jorge no Instagram"
              style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
       </a>
     </div>
@@ -316,33 +395,33 @@
     <h3>Novidades</h3>
     <div style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
       <a href="https://www.instagram.com/p/DKjd7HvCSQv/" target="_blank" rel="noopener" title="Promoção no Instagram">
-        <img src="novidades-instagram.jpg" alt="Promoção da Clínica Jorge no Instagram" 
+        <img src="novidades-instagram.jpg" alt="Promoção da Clínica Jorge no Instagram"
              style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
       </a>
       <a href="https://www.instagram.com/p/DKmjSiwizPU/" target="_blank" rel="noopener" title="Promoção no Instagram">
-        <img src="novidades-instagram2.jpg" alt="Promoção da Clínica Jorge no Instagram" 
+        <img src="novidades-instagram2.jpg" alt="Promoção da Clínica Jorge no Instagram"
              style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
-      </a>  
+      </a>
       <a href="https://www.instagram.com/p/DKg1o13CVhJ/" target="_blank" rel="noopener" title="Promoção no Instagram">
-        <img src="novidades-instagram3.jpg" alt="Promoção da Clínica Jorge no Instagram" 
+        <img src="novidades-instagram3.jpg" alt="Promoção da Clínica Jorge no Instagram"
              style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
       </a>
     </div>
   </section>
 
   <section class="equipa" style="text-align: center;">
-    <img src="equipa.jpg" alt="Equipa" 
+    <img src="equipa.jpg" alt="Equipa"
          style="width: 500px; height: 265px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
   </section>
 
   <section class="destaques" id="destaques" style="text-align: center;">
     <h3>Destaques</h3>
     <div style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
-      <img src="destaque.jpg" 
+      <img src="destaque.jpg"
            style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
-      <img src="destaque2.jpg" 
+      <img src="destaque2.jpg"
            style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
-      <img src="destaque3.jpg" 
+      <img src="destaque3.jpg"
            style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
     </div>
   </section>
@@ -354,15 +433,15 @@
     <p>Morada: Rua da Saúde, 123, Braga, Portugal</p>
 
     <div style="margin-top: 20px;">
-      <button 
-        id="whatsappBtn" 
+      <button
+        id="whatsappBtn"
         style="
-          background-color: #25D366; 
-          border: none; 
-          color: white; 
-          padding: 12px 24px; 
-          font-size: 1.1rem; 
-          font-weight: 700; 
+          background-color: #25D366;
+          border: none;
+          color: white;
+          padding: 12px 24px;
+          font-size: 1.1rem;
+          font-weight: 700;
           border-radius: 30px;
           cursor: pointer;
           box-shadow: 0 3px 6px rgba(0,0,0,0.15);
@@ -388,19 +467,7 @@
       />
       <button type="submit" class="btn-whatsapp">
         Subscrever
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-          focusable="false"
-          width="18"
-          height="18"
-          fill="white"
-          style="margin-left: 8px;"
-        >
-          <path
-            d="M20.52 3.48A11.89 11.89 0 0012 0C5.372 0 0 5.372 0 12a11.9 11.9 0 001.664 6.098L0 24l5.942-1.555A11.908 11.908 0 0012 24c6.628 0 12-5.372 12-12a11.84 11.84 0 00-3.48-8.52zM12 21.8a9.807 9.807 0 01-5.174-1.522l-.37-.23-3.53.923.942-3.44-.246-.355A9.834 9.834 0 012.2 12c0-5.422 4.378-9.8 9.8-9.8 2.62 0 5.082 1.02 6.925 2.865a9.713 9.713 0 012.875 6.934c0 5.422-4.378 9.8-9.8 9.8zm5.415-7.51l-2.54-.738a.587.587 0 00-.553.148l-1.204 1.176a7.776 7.776 0 01-3.682-3.675l1.176-1.204a.582.582 0 00.148-.553l-.74-2.537a.587.587 0 00-.568-.402h-1.793a.583.583 0 00-.582.582c0 3.013 2.447 6.207 5.536 7.303a.58.58 0 00.642-.109l1.286-1.242a.584.584 0 00-.123-.91z"
-          />
-        </svg>
+        <i class="fab fa-whatsapp"></i>
       </button>
     </form>
   </div>
@@ -426,107 +493,11 @@
       ></textarea>
       <button type="submit" class="btn-whatsapp">
         Enviar
-        <svg
-          viewBox="0 0 24 24"
-          aria-hidden="true"
-          focusable="false"
-          width="18"
-          height="18"
-          fill="white"
-          style="margin-left: 8px;"
-        >
-          <path
-            d="M20.52 3.48A11.89 11.89 0 0012 0C5.372 0 0 5.372 0 12a11.9 11.9 0 001.664 6.098L0 24l5.942-1.555A11.908 11.908 0 0012 24c6.628 0 12-5.372 12-12a11.84 11.84 0 00-3.48-8.52zM12 21.8a9.807 9.807 0 01-5.174-1.522l-.37-.23-3.53.923.942-3.44-.246-.355A9.834 9.834 0 012.2 12c0-5.422 4.378-9.8 9.8-9.8 2.62 0 5.082 1.02 6.925 2.865a9.713 9.713 0 012.875 6.934c0 5.422-4.378 9.8-9.8 9.8zm5.415-7.51l-2.54-.738a.587.587 0 00-.553.148l-1.204 1.176a7.776 7.776 0 01-3.682-3.675l1.176-1.204a.582.582 0 00.148-.553l-.74-2.537a.587.587 0 00-.568-.402h-1.793a.583.583 0 00-.582.582c0 3.013 2.447 6.207 5.536 7.303a.58.58 0 00.642-.109l1.286-1.242a.584.584 0 00-.123-.91z"
-          />
-        </svg>
+        <i class="fab fa-whatsapp"></i>
       </button>
     </form>
   </div>
 </section>
-
-<style>
-  .btn-whatsapp {
-    background-color: #25d366;
-    border: none;
-    border-radius: 4px;
-    color: white;
-    font-weight: 600;
-    font-size: 16px;
-    padding: 10px 16px;
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s ease;
-  }
-  .btn-whatsapp:hover {
-    background-color: #1ebe57;
-  }
-  input,
-  textarea {
-    width: 100%;
-    padding: 8px;
-    margin: 6px 0 12px 0;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    font-size: 14px;
-  }
-  label {
-    font-weight: 600;
-    font-size: 14px;
-  }
-  .newsletter-sugestoes {
-    display: flex;
-    gap: 40px;
-    flex-wrap: wrap;
-    margin: 20px 0;
-  }
-  .newsletter,
-  .sugestoes {
-    flex: 1 1 300px;
-  }
-</style>
-
-<script>
-  const whatsappNumber = "351936806335"; // troca pelo teu número
-
-  function abrirWhatsApp(mensagem) {
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
-      mensagem
-    )}`;
-    window.open(url, "_blank");
-  }
-
-  document
-    .getElementById("newsletterForm")
-    .addEventListener("submit", function (event) {
-      event.preventDefault();
-      const email = event.target.emailNewsletter.value.trim();
-      if (!email) {
-        alert("Por favor, insira um email válido.");
-        return;
-      }
-      const mensagem = `Quero subscrever a newsletter.\nEmail: ${email}`;
-      abrirWhatsApp(mensagem);
-    });
-
-  document
-    .getElementById("sugestoesForm")
-    .addEventListener("submit", function (event) {
-      event.preventDefault();
-      const nome = event.target.nomeSugestao.value.trim();
-      const mensagemSugestao = event.target.mensagemSugestao.value.trim();
-      if (!nome || !mensagemSugestao) {
-        alert("Por favor, preencha todos os campos.");
-        return;
-      }
-      const mensagem = `Sugestão recebida:\nNome: ${nome}\nMensagem: ${mensagemSugestao}`;
-      abrirWhatsApp(mensagem);
-    });
-</script>
-
-
 
   <section class="feedback">
     <h3>Avaliações dos Clientes</h3>
@@ -538,7 +509,6 @@
 
 
 <footer>
-
   &copy; 2025 A Botica São Jorge. Todos os direitos reservados.
 
 <div class="social-links">
@@ -558,9 +528,11 @@
 </footer>
 
 <script>
-  // WhatsApp botão
+  const whatsappNumber = "351936806335"; // troca pelo teu número
+
+  // WhatsApp botão nos Contactos
   document.getElementById('whatsappBtn').addEventListener('click', function() {
-    const phone = '351936806335'; // Número internacional completo (com código do país)
+    const phone = whatsappNumber; // Número internacional completo (com código do país)
     const message = encodeURIComponent('Olá, gostaria de saber mais informações.');
     const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
     window.open(whatsappUrl, '_blank');
@@ -602,7 +574,11 @@
   // Renderizar avaliações
   function displayReviews() {
     const container = document.getElementById('reviewsContainer');
-    container.innerHTML = '';
+    if (!container) {
+        console.error("Elemento 'reviewsContainer' não encontrado.");
+        return;
+    }
+    container.innerHTML = ''; // Limpa o conteúdo existente
     if(reviews.length === 0) {
       container.innerHTML = '<p>Não existem avaliações para mostrar.</p>';
       return;
@@ -620,23 +596,36 @@
     // Link para avaliações Google
     const googleLink = document.createElement('div');
     googleLink.classList.add('google-link');
-    googleLink.innerHTML = `<a href="https://www.google.com/search?sca_esv=80fe4e9e591dacc5&rlz=1C1GCEU_esES1096ES1096&tbm=lcl&sxsrf=AE3TifM55Wfvv-ljZXBxQKnH3_OjOQX3RQ:1750179507802&q=Clinica+S.Jorge+Cr%C3%ADticas&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDQ0MzMxNzUwMDMyNDc0MzQ1sdjAyPiKUdI5JzMvMzlRIVjPK78oPVXBuejw2hKgQPEiVtxyAAX1d5JTAAAA&rldimm=11166475006217161548&hl=pt-PT&sa=X&ved=2ahUKEwif_-ve9viNAxWsTaQEHbJSAnIQ9fQKegQILxAF&biw=1740&bih=820&dpr=1.1#lkt=LocalPoiReviews" target="_blank" rel="noopener" aria-label="Ver avaliações Google">Ver mais avaliações Google</a>`;
+    googleLink.innerHTML = `<a href="https://www.google.com/search?sca_esv=80fe4e9e591dacc5&rlz=1C1GCEU_esES1096ES1096&tbm=lcl&sxsrf=AE3TifM55Wfvv-ljZXBxQKnH3_OjOQX3RQ:1750179507802&q=Clinica+S.Jorge+Cr%C3%ADticas&rflfq=1&num=20&stick=H4sIAAAAAAAAAONgkxIxNDQ0MzMxNzUwMDMyNDc0MzQ1sdjAyPiKUdI5JzMvMzlRIVjPK78oPVXBuejw2hKgQPEiVtxyAAX1d5JTAAAA&rldimm=11166475006217161548&hl=pt-PT&sa=X&ved=2ahUKEwif_-ve9viNAxWsTaQEHbJSAnIQ9fQKegQILxAF&biw=1740&bih=820&dpr=1.1#lkt=LocalPoiReviews" target="_blank" rel="noopener" aria-label="Ver avaliações Google"><i class="fab fa-google"></i> Ver mais avaliações Google</a>`;
     container.appendChild(googleLink);
   }
 
   displayReviews();
 
-  // Submissão dos formulários (exemplo simples)
-  document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Obrigado por subscrever a nossa newsletter!');
-    this.reset();
+  // Submissão dos formulários (agora abrindo WhatsApp)
+  document.getElementById('newsletterForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const email = event.target.emailNewsletter.value.trim();
+    if (!email) {
+      alert("Por favor, insira um email válido.");
+      return;
+    }
+    const mensagem = `Quero subscrever a newsletter.\nEmail: ${email}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensagem)}`;
+    window.open(whatsappUrl, '_blank');
   });
 
-  document.getElementById('sugestoesForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    alert('Mensagem enviada com sucesso! Obrigado pelo seu feedback.');
-    this.reset();
+  document.getElementById('sugestoesForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const nome = event.target.nomeSugestao.value.trim();
+    const mensagemSugestao = event.target.mensagemSugestao.value.trim();
+    if (!nome || !mensagemSugestao) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
+    const mensagem = `Sugestão recebida:\nNome: ${nome}\nMensagem: ${mensagemSugestao}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensagem)}`;
+    window.open(whatsappUrl, '_blank');
   });
 </script>
 

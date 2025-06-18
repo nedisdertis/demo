@@ -5,12 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>A Botica São Jorge - Início</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta name="theme-color" content="#c7af75"> 
+
   <style>
     /* ----------------------------------------------------- */
-    /* DEFINIÇÃO DE VARIÁVEIS CSS PARA MODO CLARO E ESCURO */
+    /* DEFINIÇÃO DE VARIÁVEIS CSS (APENAS MODO CLARO - CORES FIXAS) */
     /* ----------------------------------------------------- */
     :root {
-      /* Cores Base para Modo Claro */
+      /* Cores Base - Fixas no tema claro */
       --primary-bg: #fff;
       --primary-text: #333;
       --secondary-text: #555;
@@ -52,49 +54,6 @@
       /* Cores Rodapé */
       --footer-text: #777;
       --footer-border: #eee;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      :root {
-        /* Cores Base para Modo Escuro */
-        --primary-bg: #1a1a1a;
-        --primary-text: #e0e0e0;
-        --secondary-text: #b0b0b0;
-        --border-color: #444;
-
-        /* Cores da Navegação */
-        --nav-bg: #333; /* Um cinza escuro para a navegação no dark mode */
-        --nav-link-color: #eee;
-        --nav-button-bg: #555;
-        --nav-button-border: #666;
-        --nav-button-hover-bg: #777;
-        --nav-button-active-bg: #444;
-
-        /* Cores de Secções/Títulos */
-        --section-bg: #2a2a2a;
-        --section-border: #555;
-        --heading-color: #e0b86a; /* Um dourado mais visível no escuro */
-        --subheading-color: #f0c27a;
-        --link-color: #e0b86a;
-        --feedback-bg: #2a2a2a;
-
-        /* Cores de Formulários */
-        --form-bg: #2a2a2a;
-        --form-border: #555;
-        --label-color: #f0c27a;
-        --input-border: #555;
-
-        /* Cores de Botões Específicos (podem manter-se ou ajustar se necessário) */
-        --whatsapp-btn-bg: #1e9e4f; /* Um verde um pouco mais escuro */
-        --whatsapp-btn-hover-bg: #156d36;
-        --google-link-color: #e0b86a;
-        --google-link-hover-bg: #333;
-        --google-icon-color: #e0b86a;
-
-        /* Cores Rodapé */
-        --footer-text: #999;
-        --footer-border: #444;
-      }
     }
     /* ----------------------------------------------------- */
     /* FIM DA DEFINIÇÃO DE VARIÁVEIS CSS */
@@ -260,8 +219,8 @@
       padding: 8px;
       border-radius: 5px;
       border: 1px solid var(--input-border);
-      background-color: var(--primary-bg); /* Input background adapts */
-      color: var(--primary-text); /* Input text adapts */
+      background-color: var(--primary-bg); /* Input background should remain light */
+      color: var(--primary-text); /* Input text should remain dark */
       margin-bottom: 10px;
       font-size: 1rem;
       resize: vertical;

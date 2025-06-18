@@ -31,7 +31,7 @@
     .nav-links {
       display: flex; /* Permite que os links fiquem lado a lado */
       gap: 15px; /* Espaçamento entre os botões */
-      flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha em telas menores */
+      flex-wrap: wrap; /* PERMITE QUE OS BOTÕES QUEBREM PARA A PRÓXIMA LINHA */
       justify-content: center; /* Centraliza os botões */
       padding: 0 10px; /* Pequeno padding nas laterais para não encostar na borda */
     }
@@ -51,6 +51,7 @@
       align-items: center; /* Centraliza o texto verticalmente */
       justify-content: center; /* Centraliza o texto horizontalmente */
       box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Sombra para dar mais destaque */
+      /* min-width: 100px; Adicione um min-width para evitar que fiquem muito pequenos */
     }
 
     .nav-links a:hover {
@@ -310,14 +311,16 @@
         padding: 10px;
       }
       .nav-links {
-        flex-direction: column; /* Stack buttons vertically on small screens */
-        align-items: center;
+        /* NÃO FORÇAMOS MAIS 'flex-direction: column' AQUI */
+        /* 'flex-wrap: wrap' no estilo base do .nav-links já lida com o empilhamento */
+        align-items: center; /* Continua a centralizar horizontalmente se houver mais de uma linha */
+        gap: 8px; /* Reduzimos um pouco o espaço entre botões em ecrãs pequenos */
       }
       .nav-links a {
-        margin: 5px 0; /* Adjust margin for vertical stacking */
-        font-size: 0.9rem;
-        width: calc(100% - 20px); /* Make buttons span most of the width */
-        max-width: 200px; /* Prevent them from becoming too wide */
+        /* REMOVEMOS A LARGURA FIXA E MAX-WIDTH */
+        /* Deixamos o tamanho ser determinado pelo conteúdo e padding */
+        font-size: 0.9rem; /* Reduz um pouco o tamanho da letra */
+        padding: 6px 12px; /* Reduz o padding para botões mais compactos */
       }
 
       /* Cabeçalho */

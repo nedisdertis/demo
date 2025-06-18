@@ -54,7 +54,7 @@
     }
     /* Styles for logo container and image */
     .logo-container img {
-      height: 80px; /* Default desktop height */
+      height: 90px; /* Aumentado ligeiramente para desktop */
       object-fit: contain;
       display: block; /* Needed for margin: auto to center if container has specific width */
     }
@@ -216,79 +216,6 @@
       color: #c7af75; /* Cor do ícone do Google */
     }
 
-    /* Responsivo */
-    @media (max-width: 700px) {
-      /* Navegação */
-      nav {
-        padding: 10px;
-      }
-      .nav-links {
-        flex-direction: column;
-        align-items: center;
-      }
-      .nav-links a {
-        margin: 5px 0;
-        font-size: 0.9rem;
-      }
-
-      /* Cabeçalho */
-      header {
-        padding: 20px 10px; /* Mobile padding */
-      }
-      header .header-content { /* Targeting the flex container */
-        flex-direction: column; /* Stack logo and video vertically */
-        align-items: center; /* Center them horizontally in the column */
-        gap: 20px;
-      }
-      .logo-container img { /* Logo image on mobile */
-        height: 60px; /* Mobile height */
-        margin: 0 auto; /* Ensure the image itself is centered within its (potentially centered) container */
-      }
-      .video-container video { /* Vídeo on mobile */
-        width: 100%;
-        height: auto;
-      }
-
-      /* Secções de Imagens */
-      .promo > div,
-      .novidades > div,
-      .destaques > div {
-        flex-direction: column;
-        align-items: center;
-        gap: 20px;
-      }
-      .promo img,
-      .novidades img,
-      .destaques img {
-        width: 80%; /* Ajusta a largura das imagens */
-        max-width: 250px; /* Garante que não fiquem muito grandes */
-        height: auto;
-      }
-
-      /* Secção Equipa */
-      .equipa img {
-        width: 90%; /* Ajusta a largura da imagem da equipa */
-        height: auto;
-      }
-
-      /* Newsletter e Sugestões */
-      .newsletter-sugestoes {
-        flex-direction: column;
-      }
-
-      /* Contactos */
-      .contactos {
-        padding: 15px 10px;
-      }
-      .contactos p {
-        font-size: 0.95rem;
-      }
-      .contactos button {
-        padding: 10px 20px;
-        font-size: 1rem;
-      }
-    }
-
     /* CSS ajustado para os botões do WhatsApp nos formulários */
     .btn-whatsapp {
       background-color: #25d366;
@@ -336,6 +263,79 @@
     .sugestoes {
       flex: 1 1 300px;
     }
+
+    /* Responsivo */
+    @media (max-width: 700px) {
+      /* Navegação */
+      nav {
+        padding: 10px;
+      }
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+      }
+      .nav-links a {
+        margin: 5px 0;
+        font-size: 0.9rem;
+      }
+
+      /* Cabeçalho */
+      header {
+        padding: 20px 10px; /* Mobile padding */
+      }
+      header .header-content { /* Targeting the flex container */
+        flex-direction: column; /* Stack logo and video vertically */
+        align-items: center; /* Center them horizontally in the column */
+        gap: 20px;
+      }
+      .logo-container img { /* Logo image on mobile */
+        height: 70px; /* Aumentado ligeiramente para mobile */
+        margin: 0 auto; /* Ensure the image itself is centered within its (potentially centered) container */
+      }
+      .video-container video { /* Vídeo on mobile */
+        width: 100%;
+        height: auto;
+      }
+
+      /* Secções de Imagens */
+      .promo > div,
+      .novidades > div,
+      .destaques > div {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      .promo img,
+      .novidades img,
+      .destaques img {
+        width: 80%; /* Ajusta a largura das imagens */
+        max-width: 250px; /* Garante que não fiquem muito grandes */
+        height: auto;
+      }
+
+      /* Secção Equipa */
+      .equipa img {
+        width: 90%; /* Ajusta a largura da imagem da equipa */
+        height: auto;
+      }
+
+      /* Newsletter e Sugestões */
+      .newsletter-sugestoes {
+        flex-direction: column;
+      }
+
+      /* Contactos */
+      .contactos {
+        padding: 15px 10px;
+      }
+      .contactos p {
+        font-size: 0.95rem;
+      }
+      .contactos button {
+        padding: 10px 20px;
+        font-size: 1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -351,7 +351,8 @@
   </nav>
 
 <header>
-  <div class="header-content"> <div class="logo-container">
+  <div class="header-content">
+    <div class="logo-container">
       <img src="logotipo.png" alt="Logotipo da Botica São Jorge" />
     </div>
 
@@ -505,7 +506,6 @@
       <p>A carregar avaliações...</p>
     </div>
   </section>
-</main>
 
 
 <footer>
@@ -552,7 +552,7 @@
     return starsHTML;
   }
 
-  // Mock dados de avaliações (exemplo)
+  // Mock dados de avaliações (exemplo) - REVERTIDO PARA OS DADOS ESTÁTICOS
   const reviews = [
     {
       name: "João Silva",
@@ -571,7 +571,7 @@
     }
   ];
 
-  // Renderizar avaliações
+  // Renderizar avaliações - REVERTIDO PARA A FUNÇÃO QUE RENDERIZA OS DADOS ESTÁTICOS
   function displayReviews() {
     const container = document.getElementById('reviewsContainer');
     if (!container) {
@@ -600,7 +600,7 @@
     container.appendChild(googleLink);
   }
 
-  displayReviews();
+  displayReviews(); // Chamada para exibir as avaliações estáticas
 
   // Submissão dos formulários (agora abrindo WhatsApp)
   document.getElementById('newsletterForm').addEventListener('submit', function(event) {

@@ -6,13 +6,109 @@
   <title>A Botica São Jorge - Início</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
+    /* ----------------------------------------------------- */
+    /* DEFINIÇÃO DE VARIÁVEIS CSS PARA MODO CLARO E ESCURO */
+    /* ----------------------------------------------------- */
+    :root {
+      /* Cores Base para Modo Claro */
+      --primary-bg: #fff;
+      --primary-text: #333;
+      --secondary-text: #555;
+      --border-color: #eee;
+
+      /* Cores da Navegação */
+      --nav-bg: #c7af75;
+      --nav-link-color: #fff;
+      --nav-button-bg: #a08c5e; /* Ouro/Bronze do botão normal */
+      --nav-button-border: #907f56;
+      --nav-button-hover-bg: #8b6c00; /* Ouro mais escuro no hover */
+      --nav-button-active-bg: #6a5300; /* Ouro mais escuro no active */
+
+      /* Cores de Secções/Títulos */
+      --section-bg: #f9f7ec; /* Fundo das secções promocionais */
+      --section-border: #c7af75;
+      --heading-color: #c7af75; /* Cor dos títulos h2 */
+      --subheading-color: #8b6c00; /* Cor dos títulos h3 */
+      --link-color: #c7af75; /* Cor dos links de contacto */
+      --feedback-bg: #fff;
+
+      /* Cores de Formulários */
+      --form-bg: #fff;
+      --form-border: #c7af75;
+      --label-color: #8b6c00;
+      --input-border: #ccc;
+
+      /* Cores de Botões Específicos */
+      --whatsapp-btn-bg: #25d366;
+      --whatsapp-btn-hover-bg: #1ebe57;
+      --google-link-color: #c7af75;
+      --google-link-hover-bg: #f0f0f0;
+      --google-icon-color: #c7af75;
+
+      /* Cores Estrela (não mudam com dark mode geralmente) */
+      --star-color-filled: #ffd54f;
+      --star-color-empty: #ccc;
+
+      /* Cores Rodapé */
+      --footer-text: #777;
+      --footer-border: #eee;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        /* Cores Base para Modo Escuro */
+        --primary-bg: #1a1a1a;
+        --primary-text: #e0e0e0;
+        --secondary-text: #b0b0b0;
+        --border-color: #444;
+
+        /* Cores da Navegação */
+        --nav-bg: #333; /* Um cinza escuro para a navegação no dark mode */
+        --nav-link-color: #eee;
+        --nav-button-bg: #555;
+        --nav-button-border: #666;
+        --nav-button-hover-bg: #777;
+        --nav-button-active-bg: #444;
+
+        /* Cores de Secções/Títulos */
+        --section-bg: #2a2a2a;
+        --section-border: #555;
+        --heading-color: #e0b86a; /* Um dourado mais visível no escuro */
+        --subheading-color: #f0c27a;
+        --link-color: #e0b86a;
+        --feedback-bg: #2a2a2a;
+
+        /* Cores de Formulários */
+        --form-bg: #2a2a2a;
+        --form-border: #555;
+        --label-color: #f0c27a;
+        --input-border: #555;
+
+        /* Cores de Botões Específicos (podem manter-se ou ajustar se necessário) */
+        --whatsapp-btn-bg: #1e9e4f; /* Um verde um pouco mais escuro */
+        --whatsapp-btn-hover-bg: #156d36;
+        --google-link-color: #e0b86a;
+        --google-link-hover-bg: #333;
+        --google-icon-color: #e0b86a;
+
+        /* Cores Rodapé */
+        --footer-text: #999;
+        --footer-border: #444;
+      }
+    }
+    /* ----------------------------------------------------- */
+    /* FIM DA DEFINIÇÃO DE VARIÁVEIS CSS */
+    /* ----------------------------------------------------- */
+
+
+    /* APLICAÇÃO DAS VARIÁVEIS */
     *, *::before, *::after {
       box-sizing: border-box;
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #fff;
-      color: #333;
+      background: var(--primary-bg);
+      color: var(--primary-text);
       line-height: 1.6;
       margin: 0;
       padding-top: 60px; /* Padding padrão para desktop */
@@ -21,7 +117,7 @@
       position: fixed;
       top: 0;
       width: 100%;
-      background: #c7af75;
+      background: var(--nav-bg);
       opacity: 0.9; /* MENU LIGEIRAMENTE TRANSPARENTE */
       display: flex;
       justify-content: center;
@@ -41,13 +137,13 @@
 
     /* ESTILOS ALTERADOS PARA FAZER OS LINKS PARECEREM BOTÕES */
     .nav-links a {
-      color: #fff;
+      color: var(--nav-link-color);
       text-decoration: none;
       font-weight: 600;
       font-size: 1rem;
       padding: 8px 15px;
-      background-color: #a08c5e;
-      border: 1px solid #907f56;
+      background-color: var(--nav-button-bg);
+      border: 1px solid var(--nav-button-border);
       border-radius: 5px;
       transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
       display: inline-flex;
@@ -57,14 +153,14 @@
     }
 
     .nav-links a:hover {
-      color: #fff;
-      background-color: #8b6c00;
+      color: var(--nav-link-color); /* Mantém branco/claro no hover */
+      background-color: var(--nav-button-hover-bg);
       transform: translateY(-2px);
       box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
 
     .nav-links a:active {
-      background-color: #6a5300;
+      background-color: var(--nav-button-active-bg);
       transform: translateY(0);
       box-shadow: 0 1px 2px rgba(0,0,0,0.2);
     }
@@ -72,7 +168,7 @@
 
     header {
       padding: 60px 20px 40px; /* Default desktop padding */
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid var(--border-color);
       text-align: center;
     }
     /* Styles for the main flex container inside header */
@@ -98,7 +194,7 @@
     }
     header p {
       font-style: italic;
-      color: #555;
+      color: var(--secondary-text);
       font-size: 1.2rem;
     }
     main {
@@ -110,22 +206,22 @@
       margin-bottom: 60px;
     }
     h2 {
-      color: #c7af75;
+      color: var(--heading-color);
       font-weight: 700;
       font-size: 1.8rem;
-      border-bottom: 2px solid #c7af75;
+      border-bottom: 2px solid var(--heading-color);
       padding-bottom: 8px;
       margin-bottom: 25px;
     }
     .promo, .novidades, .equipa, .destaques, .contactos, .feedback {
-      background: #f9f7ec;
-      border: 1px solid #c7af75;
+      background: var(--section-bg);
+      border: 1px solid var(--section-border);
       border-radius: 8px;
       padding: 15px 20px;
       margin-bottom: 40px;
     }
     .promo h3, .novidades h3, .equipa h3, .destaques h3, .contactos h3, .feedback h3 {
-      color: #8b6c00;
+      color: var(--subheading-color);
       margin-bottom: 10px;
       font-weight: 700;
     }
@@ -133,6 +229,11 @@
       margin-right: 15px;
       text-decoration: none;
     }
+    .social-links .fab.fa-facebook { color: #3b5998; } /* Cores de marca fixas */
+    .social-links .fab.fa-instagram { color: #E4405F; } /* Cores de marca fixas */
+    .social-links .fab.fa-whatsapp { color: #25D366; } /* Cores de marca fixas */
+
+
     .newsletter-sugestoes {
       display: flex;
       flex-wrap: wrap;
@@ -144,28 +245,30 @@
       flex: 1;
       min-width: 280px;
       padding: 15px 20px;
-      border: 1px solid #c7af75;
+      border: 1px solid var(--form-border);
       border-radius: 8px;
-      background: #fff;
+      background: var(--form-bg);
     }
     label {
       display: block;
       margin-bottom: 6px;
       font-weight: 600;
-      color: #8b6c00;
+      color: var(--label-color);
     }
-    input[type="text"], textarea {
+    input[type="text"], textarea, input[type="email"] {
       width: 100%;
       padding: 8px;
       border-radius: 5px;
-      border: 1px solid #ccc;
+      border: 1px solid var(--input-border);
+      background-color: var(--primary-bg); /* Input background adapts */
+      color: var(--primary-text); /* Input text adapts */
       margin-bottom: 10px;
       font-size: 1rem;
       resize: vertical;
     }
     .btn-submit {
-      background: #25D366;
-      color: #fff;
+      background: var(--whatsapp-btn-bg); /* Use WhatsApp button style for submit */
+      color: var(--nav-link-color); /* White text */
       border: none;
       padding: 10px 15px;
       font-weight: 700;
@@ -174,20 +277,20 @@
       width: 100%;
     }
     .btn-submit:hover {
-      background: #128c34;
+      background: var(--whatsapp-btn-hover-bg);
     }
     footer {
       text-align: center;
       padding: 20px 10px;
       font-size: 0.9rem;
-      color: #777;
-      border-top: 1px solid #eee;
+      color: var(--footer-text);
+      border-top: 1px solid var(--footer-border);
     }
 
     /* Feedback */
     .feedback .review {
-      background: #fff;
-      border: 1px solid #c7af75;
+      background: var(--feedback-bg);
+      border: 1px solid var(--section-border);
       border-radius: 6px;
       padding: 12px 15px;
       margin-bottom: 15px;
@@ -197,7 +300,7 @@
       margin: 6px 0;
     }
     .stars {
-      color: #ffd54f;
+      color: var(--star-color-filled);
       margin-left: 10px;
       font-size: 1.1rem;
       display: inline-block;
@@ -209,13 +312,13 @@
       transition: color 0.3s ease;
     }
     .stars i.filled {
-      color: #ffd54f;
+      color: var(--star-color-filled);
       animation: starFlash 1.2s ease forwards;
     }
     @keyframes starFlash {
-      0% { color: #ccc; }
-      50% { color: #ffd54f; }
-      100% { color: #ffd54f; }
+      0% { color: var(--star-color-empty); }
+      50% { color: var(--star-color-filled); }
+      100% { color: var(--star-color-filled); }
     }
     
     /* Estilo para o link "Ver mais avaliações Google" */
@@ -225,11 +328,11 @@
     }
 
     .feedback .google-link a {
-      color: #c7af75;
+      color: var(--google-link-color);
       font-weight: 700;
       text-decoration: none;
-      background-color: #fff;
-      border: 1px solid #c7af75;
+      background-color: var(--feedback-bg);
+      border: 1px solid var(--google-link-color);
       padding: 8px 15px;
       border-radius: 20px;
       display: inline-flex;
@@ -239,21 +342,21 @@
     }
 
     .feedback .google-link a:hover {
-      background-color: #f0f0f0;
-      color: #8b6c00;
+      background-color: var(--google-link-hover-bg);
+      color: var(--subheading-color);
       text-decoration: none;
     }
     .feedback .google-link a .fab.fa-google {
       font-size: 1.1rem;
-      color: #c7af75;
+      color: var(--google-icon-color);
     }
 
     /* CSS ajustado para os botões do WhatsApp nos formulários */
     .btn-whatsapp {
-      background-color: #25d366;
+      background-color: var(--whatsapp-btn-bg);
       border: none;
       border-radius: 4px;
-      color: white;
+      color: var(--nav-link-color); /* Text should be light on whatsapp green */
       font-weight: 600;
       font-size: 16px;
       padding: 10px 16px;
@@ -265,35 +368,16 @@
       width: 100%;
     }
     .btn-whatsapp:hover {
-      background-color: #1ebe57;
+      background-color: var(--whatsapp-btn-hover-bg);
     }
     .btn-whatsapp .fab.fa-whatsapp {
       margin-left: 8px;
       font-size: 18px;
     }
-    input,
-    textarea {
-      width: 100%;
-      padding: 8px;
-      margin: 6px 0 12px 0;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-      font-size: 14px;
-    }
-    label {
-      font-weight: 600;
-      font-size: 14px;
-    }
-    .newsletter-sugestoes {
-      display: flex;
-      gap: 40px;
-      flex-wrap: wrap;
-      margin: 20px 0;
-    }
-    .newsletter,
-    .sugestoes {
-      flex: 1 1 300px;
+    
+    /* Links de contacto */
+    .contactos p a {
+      color: var(--link-color);
     }
 
     /* Responsividade da imagem da Equipa */
@@ -305,21 +389,21 @@
       cursor: pointer;
       object-fit: cover;
       /* --- NOVAS ADIÇÕES PARA INTERATIVIDADE MAIS NOTÓRIAS --- */
-      transition: transform 0.4s ease, box-shadow 0.4s ease, outline 0.4s ease; /* Transições mais lentas e adicionei outline */
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra mais visível por padrão */
-      outline: 2px solid transparent; /* Outline transparente por padrão */
+      transition: transform 0.4s ease, box-shadow 0.4s ease, outline 0.4s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      outline: 2px solid transparent;
     }
 
     .equipa img:hover {
-      transform: scale(1.05); /* Zoom mais visível ao passar o rato */
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3); /* Sombra mais pronunciada no hover */
-      outline: 2px solid #8b6c00; /* Outline para destacar ainda mais */
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      outline: 2px solid var(--subheading-color); /* Cor de destaque para o outline */
     }
 
     .equipa img:active {
-      transform: scale(0.95); /* Encolhe mais ao clicar, para feedback tátil claro */
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15); /* Sombra reduzida ao clicar */
-      outline: 2px solid #6a5300; /* Outline mais escuro ao clicar */
+      transform: scale(0.95);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+      outline: 2px solid var(--nav-button-active-bg); /* Cor mais escura no active */
     }
     /* --- FIM DAS NOVAS ADIÇÕES PARA INTERATIVIDADE --- */
 
@@ -488,8 +572,8 @@
 
   <section class="contactos" id="contactos" style="text-align: center;">
     <h3>Contactos</h3>
-    <p>Telefone: <a href="tel:+351930414812" style="color:#c7af75;">+351 930 414 812</a></p>
-    <p>Email: <a href="mailto:clincas.jorge@gmail.com" style="color:#c7af75;">clincas.jorge@gmail.com</a></p>
+    <p>Telefone: <a href="tel:+351930414812">+351 930 414 812</a></p>
+    <p>Email: <a href="mailto:clincas.jorge@gmail.com">clincas.jorge@gmail.com</a></p>
     <p>Morada: R. José Isidro dos Santos 1, 2625-084 Póvoa de Santa Iria</p>
 
     <div style="margin-top: 20px;">
@@ -561,16 +645,16 @@
   &copy; 2025 A Botica São Jorge. Todos os direitos reservados.
 
 <div class="social-links">
-  <a href="https://www.facebook.com/boticasaojorge" target="_blank" title="Facebook" style="color:#3b5998;">
+  <a href="https://www.facebook.com/boticasaojorge" target="_blank" title="Facebook">
     <i class="fab fa-facebook fa-2x"></i>
   </a>
-  <a href="https://www.instagram.com/boticasaojorge" target="_blank" title="Instagram Geral" style="color:#E4405F;">
+  <a href="https://www.instagram.com/boticasaojorge" target="_blank" title="Instagram Geral">
     <i class="fab fa-instagram fa-2x"></i>
   </a>
-  <a href="https://www.instagram.com/orun.pt/" target="_blank" title="Instagram Publicação Orun" style="color:#E4405F;">
+  <a href="https://www.instagram.com/orun.pt/" target="_blank" title="Instagram Publicação Orun">
     <i class="fab fa-instagram fa-2x"></i>
   </a>
-  <a href="https://wa.me/351936806335" target="_blank" title="WhatsApp" style="color:#25D366;">
+  <a href="https://wa.me/351936806335" target="_blank" title="WhatsApp">
     <i class="fab fa-whatsapp fa-2x"></i>
   </a>
 </div>

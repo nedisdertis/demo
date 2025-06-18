@@ -264,6 +264,16 @@
       flex: 1 1 300px;
     }
 
+    /* Responsividade da imagem da Equipa */
+    .equipa img {
+      width: 100%; /* Ocupa 100% da largura do seu contentor */
+      max-width: 500px; /* Define um tamanho máximo para a imagem */
+      height: auto; /* Mantém a proporção da imagem */
+      border-radius: 8px;
+      cursor: pointer;
+      object-fit: cover;
+    }
+
     /* Responsivo */
     @media (max-width: 700px) {
       /* Navegação */
@@ -314,10 +324,13 @@
       }
 
       /* Secção Equipa */
+      /* Já está coberto pela regra .equipa img global para 100% largura e max-width
+         Se quiser um ajuste específico para mobile (e.g., 90% do container), pode re-adicionar aqui:
       .equipa img {
-        width: 90%; /* Ajusta a largura da imagem da equipa */
+        width: 90%;
         height: auto;
       }
+      */
 
       /* Newsletter e Sugestões */
       .newsletter-sugestoes {
@@ -411,8 +424,9 @@
   </section>
 
   <section class="equipa" style="text-align: center;">
-    <img src="equipa.jpg" alt="Equipa"
-         style="width: 500px; height: 265px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+    <a href="equipa.jpg" target="_blank" rel="noopener">
+      <img src="equipa.jpg" alt="Equipa" />
+    </a>
   </section>
 
   <section class="destaques" id="destaques" style="text-align: center;">
@@ -552,7 +566,7 @@
     return starsHTML;
   }
 
-  // Mock dados de avaliações (exemplo) - REVERTIDO PARA OS DADOS ESTÁTICOS
+  // Mock dados de avaliações (exemplo)
   const reviews = [
     {
       name: "João Silva",
@@ -571,7 +585,7 @@
     }
   ];
 
-  // Renderizar avaliações - REVERTIDO PARA A FUNÇÃO QUE RENDERIZA OS DADOS ESTÁTICOS
+  // Renderizar avaliações
   function displayReviews() {
     const container = document.getElementById('reviewsContainer');
     if (!container) {

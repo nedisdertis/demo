@@ -4,47 +4,133 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>A Botica São Jorge - Corpo</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta name="theme-color" content="#c7af75">
+
   <style>
+    /* ----------------------------------------------------- */
+    /* DEFINIÇÃO DE VARIÁVEIS CSS (APENAS MODO CLARO - CORES FIXAS) */
+    /* ----------------------------------------------------- */
+    :root {
+      /* Cores Base - Fixas no tema claro */
+      --primary-bg: #fff;
+      --primary-text: #333;
+      --secondary-text: #555;
+      --border-color: #eee;
+
+      /* Cores da Navegação */
+      --nav-bg: #c7af75;
+      --nav-link-color: #fff;
+      --nav-button-bg: #a08c5e; /* Ouro/Bronze do botão normal */
+      --nav-button-border: #907f56;
+      --nav-button-hover-bg: #8b6c00; /* Ouro mais escuro no hover */
+      --nav-button-active-bg: #6a5300; /* Ouro mais escuro no active */
+
+      /* Cores de Secções/Títulos */
+      --section-bg: #f9f7ec; /* Fundo das secções promocionais */
+      --section-border: #c7af75;
+      --heading-color: #c7af75; /* Cor dos títulos h2 */
+      --subheading-color: #8b6c00; /* Cor dos títulos h3 */
+      --link-color: #c7af75; /* Cor dos links de contacto */
+      --feedback-bg: #fff;
+
+      /* Cores de Formulários */
+      --form-bg: #fff;
+      --form-border: #c7af75;
+      --label-color: #8b6c00;
+      --input-border: #ccc;
+
+      /* Cores de Botões Específicos */
+      --whatsapp-btn-bg: #25d366;
+      --whatsapp-btn-hover-bg: #1ebe57;
+      --google-link-color: #c7af75;
+      --google-link-hover-bg: #f0f0f0;
+      --google-icon-color: #c7af75;
+
+      /* Cores Estrela (não mudam com dark mode geralmente) */
+      --star-color-filled: #ffd54f;
+      --star-color-empty: #ccc;
+
+      /* Cores Rodapé */
+      --footer-text: #777;
+      --footer-border: #eee;
+    }
+    /* ----------------------------------------------------- */
+    /* FIM DA DEFINIÇÃO DE VARIÁVEIS CSS */
+    /* ----------------------------------------------------- */
+
+    /* APLICAÇÃO DAS VARIÁVEIS */
     *, *::before, *::after {
       box-sizing: border-box;
     }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #fff;
-      color: #333;
+      background: var(--primary-bg);
+      color: var(--primary-text);
       line-height: 1.6;
       margin: 0;
-      padding-top: 60px;
+      padding-top: 60px; /* Padding padrão para desktop */
     }
     nav {
       position: fixed;
       top: 0;
       width: 100%;
-      background: #c7af75;
+      background: var(--nav-bg);
+      opacity: 0.9; /* MENU LIGEIRAMENTE TRANSPARENTE */
       display: flex;
       justify-content: center;
       padding: 10px 0;
       z-index: 1000;
+      min-height: 50px;
     }
+    /* Estilos para o container dos links de navegação */
+    .nav-links {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0 10px;
+      width: 100%;
+    }
+
+    /* ESTILOS ALTERADOS PARA FAZER OS LINKS PARECEREM BOTÕES */
     .nav-links a {
-      color: #fff;
+      color: var(--nav-link-color);
       text-decoration: none;
-      margin: 0 14px;
       font-weight: 600;
       font-size: 1rem;
-      transition: color 0.3s ease;
+      padding: 8px 15px;
+      background-color: var(--nav-button-bg);
+      border: 1px solid var(--nav-button-border);
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: #ffd54f;
+
+    .nav-links a:hover {
+      color: var(--nav-link-color); /* Mantém branco/claro no hover */
+      background-color: var(--nav-button-hover-bg);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
+
+    .nav-links a:active {
+      background-color: var(--nav-button-active-bg);
+      transform: translateY(0);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    /* FIM DOS ESTILOS ALTERADOS */
+
     header {
       text-align: center;
       padding: 20px 20px 10px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid var(--border-color);
     }
     header h1 {
-      color: #c7af75;
+      color: var(--heading-color);
       font-weight: 700;
     }
     main {
@@ -53,10 +139,10 @@
       padding: 0 20px 80px;
     }
     h2 {
-      color: #c7af75;
+      color: var(--heading-color);
       font-weight: 700;
       font-size: 1.8rem;
-      border-bottom: 2px solid #c7af75;
+      border-bottom: 2px solid var(--heading-color);
       padding-bottom: 8px;
       margin-bottom: 25px;
     }
@@ -66,8 +152,8 @@
       gap: 24px;
     }
     .card {
-      background: #fff;
-      border: 1px solid #ddd;
+      background: var(--primary-bg);
+      border: 1px solid var(--border-color);
       border-radius: 8px;
       padding: 20px;
       box-shadow: 0 1px 4px rgba(0,0,0,0.05);
@@ -78,7 +164,7 @@
       box-shadow: 0 6px 14px rgba(184,134,11,0.3);
     }
     .card h3 {
-      color: #8b6c00;
+      color: var(--subheading-color);
       margin-bottom: 10px;
       font-weight: 600;
     }
@@ -87,12 +173,12 @@
     }
     .price {
       font-weight: 700;
-      color: #8b6c00;
+      color: var(--subheading-color);
       margin-bottom: 15px;
     }
     .btn-cart {
-      background: #25D366;
-      color: #fff;
+      background: var(--whatsapp-btn-bg);
+      color: var(--nav-link-color);
       font-weight: 700;
       padding: 10px 18px;
       border: none;
@@ -101,15 +187,15 @@
       transition: background-color 0.3s ease;
     }
     .btn-cart:hover {
-      background: #128c34;
+      background: var(--whatsapp-btn-hover-bg);
     }
     /* Cart styles */
     .cart-button {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: #25D366;
-      color: #fff;
+      background: var(--whatsapp-btn-bg);
+      color: var(--nav-link-color);
       border: none;
       border-radius: 50%;
       width: 60px;
@@ -137,8 +223,8 @@
       position: fixed;
       bottom: 90px;
       right: 20px;
-      background: white;
-      border: 1px solid #ddd;
+      background: var(--primary-bg);
+      border: 1px solid var(--border-color);
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.2);
       padding: 16px;
@@ -148,7 +234,7 @@
     .cart-modal strong {
       display: block;
       margin-bottom: 8px;
-      color: #8b6c00;
+      color: var(--subheading-color);
     }
     .cart-modal ul {
       list-style: none;
@@ -158,13 +244,13 @@
       overflow-y: auto;
     }
     .cart-modal ul li {
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid var(--border-color);
       padding: 8px 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.9rem;
-      color: #333;
+      color: var(--primary-text);
     }
     .cart-modal ul li div {
       display: flex;
@@ -179,16 +265,16 @@
       padding: 2px 6px;
       border-radius: 4px;
       transition: background-color 0.2s ease;
-      color: #8b6c00;
+      color: var(--subheading-color);
       font-weight: 700;
     }
     .cart-modal button:hover {
-      background-color: #c7af75;
+      background-color: var(--nav-bg);
       color: white;
     }
     .btn-whatsapp {
-      background: #25D366;
-      color: white;
+      background: var(--whatsapp-btn-bg);
+      color: var(--nav-link-color);
       border: none;
       padding: 10px;
       width: 100%;
@@ -200,7 +286,48 @@
       transition: background-color 0.3s ease;
     }
     .btn-whatsapp:hover {
-      background: #128c34;
+      background: var(--whatsapp-btn-hover-bg);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      font-size: 0.9rem;
+      color: var(--footer-text);
+      border-top: 1px solid var(--footer-border);
+    }
+
+    .social-links a {
+      margin-right: 15px;
+      text-decoration: none;
+    }
+    .social-links .fab.fa-facebook { color: #3b5998; } /* Cores de marca fixas */
+    .social-links .fab.fa-instagram { color: #E4405F; } /* Cores de marca fixas */
+    .social-links .fab.fa-whatsapp { color: #25D366; } /* Cores de marca fixas */
+
+    /* Responsivo */
+    @media (max-width: 700px) {
+      body {
+        padding-top: 110px;
+      }
+
+      /* Navegação */
+      nav {
+        padding: 10px 0;
+      }
+      .nav-links {
+        align-items: center;
+        gap: 8px;
+      }
+      .nav-links a {
+        font-size: 0.9rem;
+        padding: 6px 12px;
+      }
+
+      /* Cabeçalho */
+      header {
+        padding: 20px 10px;
+      }
     }
   </style>
 </head>
@@ -211,8 +338,8 @@
     <a href="produtos-corpo.html">Corpo</a>
     <a href="produtos-mente.html">Mente</a>
     <a href="produtos-alma.html">Alma</a>
-    <a href="#destaques">Destaques</a>
-    <a href="#contactos">Contactos</a>
+    <a href="index.html#destaques">Destaques</a>
+    <a href="index.html#contactos">Contactos</a>
   </div>
 </nav>
 
@@ -254,91 +381,134 @@
     <button class="btn-whatsapp" onclick="checkoutWhatsApp()">Finalizar Compra</button>
   </div>
 
-  <script>
-    const cartKey = 'boticaCart';
-    let cart = JSON.parse(localStorage.getItem(cartKey)) || {};
+---
 
-    function saveCart() {
-      localStorage.setItem(cartKey, JSON.stringify(cart));
+<footer>
+  &copy; 2025 A Botica São Jorge. Todos os direitos reservados.
+
+<div class="social-links">
+  <a href="https://www.facebook.com/boticasaojorge" target="_blank" title="Facebook">
+    <i class="fab fa-facebook fa-2x"></i>
+  </a>
+  <a href="https://www.instagram.com/boticasaojorge" target="_blank" title="Instagram Geral">
+    <i class="fab fa-instagram fa-2x"></i>
+  </a>
+  <a href="https://www.instagram.com/orun.pt/" target="_blank" title="Instagram Publicação Orun">
+    <i class="fab fa-instagram fa-2x"></i>
+  </a>
+  <a href="https://wa.me/351936806335" target="_blank" title="WhatsApp">
+    <i class="fab fa-whatsapp fa-2x"></i>
+  </a>
+</div>
+</footer>
+
+<script>
+  const whatsappNumber = "351936806335"; // troca pelo teu número
+
+  const cartKey = 'boticaCart';
+  let cart = JSON.parse(localStorage.getItem(cartKey)) || {};
+
+  function saveCart() {
+    localStorage.setItem(cartKey, JSON.stringify(cart));
+  }
+
+  function updateCartView() {
+    const list = document.getElementById("cartList");
+    list.innerHTML = "";
+    let totalItems = 0;
+    let totalPrice = 0;
+    for (const item in cart) {
+      const qty = Number(cart[item].qty);
+      const price = Number(cart[item].price);
+      if (isNaN(qty) || isNaN(price)) continue;
+      const itemTotal = qty * price;
+      const li = document.createElement("li");
+      li.innerHTML = `
+        ${item} x${qty} — €${itemTotal.toFixed(2)}
+        <div>
+          <button onclick="changeQty('${item}', -1)">−</button>
+          <button onclick="changeQty('${item}', 1)">+</button>
+          <button onclick="removeItem('${item}')">x</button>
+        </div>
+      `;
+      list.appendChild(li);
+      totalItems += qty;
+      totalPrice += itemTotal;
     }
+    document.getElementById("cart-count").textContent = totalItems;
+    document.getElementById("cartTotal").textContent = totalPrice.toFixed(2);
+  }
 
-    function updateCartView() {
-      const list = document.getElementById("cartList");
-      list.innerHTML = "";
-      let totalItems = 0;
-      let totalPrice = 0;
-      for (const item in cart) {
-        const qty = Number(cart[item].qty);
-        const price = Number(cart[item].price);
-        if (isNaN(qty) || isNaN(price)) continue;
-        const itemTotal = qty * price;
-        const li = document.createElement("li");
-        li.innerHTML = `
-          ${item} x${qty} — €${itemTotal.toFixed(2)}
-          <div>
-            <button onclick="changeQty('${item}', -1)">−</button>
-            <button onclick="changeQty('${item}', 1)">+</button>
-            <button onclick="removeItem('${item}')">x</button>
-          </div>
-        `;
-        list.appendChild(li);
-        totalItems += qty;
-        totalPrice += itemTotal;
-      }
-      document.getElementById("cart-count").textContent = totalItems;
-      document.getElementById("cartTotal").textContent = totalPrice.toFixed(2);
+  function addToCart(item, price) {
+    price = Number(price);
+    if (isNaN(price) || price <= 0) {
+      alert('Preço inválido');
+      return;
     }
-
-    function addToCart(item, price) {
-      price = Number(price);
-      if (isNaN(price) || price <= 0) {
-        alert('Preço inválido');
-        return;
-      }
-      if (cart[item]) {
-        cart[item].qty = Number(cart[item].qty) + 1;
-      } else {
-        cart[item] = { qty: 1, price };
-      }
-      saveCart();
-      updateCartView();
-      document.getElementById("cartModal").style.display = "block";
+    if (cart[item]) {
+      cart[item].qty = Number(cart[item].qty) + 1;
+    } else {
+      cart[item] = { qty: 1, price };
     }
+    saveCart();
+    updateCartView();
+    document.getElementById("cartModal").style.display = "block";
+  }
 
-    function changeQty(item, delta) {
-      if (!cart[item]) return;
-      cart[item].qty = Number(cart[item].qty) + delta;
-      if (cart[item].qty <= 0) {
-        delete cart[item];
-      }
-      saveCart();
-      updateCartView();
-    }
-
-    function removeItem(item) {
-      if (!cart[item]) return;
+  function changeQty(item, delta) {
+    if (!cart[item]) return;
+    cart[item].qty = Number(cart[item].qty) + delta;
+    if (cart[item].qty <= 0) {
       delete cart[item];
-      saveCart();
-      updateCartView();
     }
+    saveCart();
+    updateCartView();
+  }
 
-    function toggleCart() {
-      const modal = document.getElementById("cartModal");
-      modal.style.display = modal.style.display === "block" ? "none" : "block";
+  function removeItem(item) {
+    if (!cart[item]) return;
+    delete cart[item];
+    saveCart();
+    updateCartView();
+  }
+
+  function toggleCart() {
+    const modal = document.getElementById("cartModal");
+    modal.style.display = modal.style.display === "block" ? "none" : "block";
+  }
+
+  function checkoutWhatsApp() {
+    const items = Object.entries(cart);
+    if (items.length === 0) {
+      alert("Carrinho vazio!");
+      return;
     }
+    const message = `Olá! Gostaria de comprar:\n` + items.map(([item, data]) => `- ${item} x${data.qty} (€${(Number(data.price) * Number(data.qty)).toFixed(2)})`).join("\n");
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+    // Clear cart after checkout (optional, uncomment if desired)
+    // cart = {};
+    // saveCart();
+    // updateCartView();
+  }
 
-    function checkoutWhatsApp() {
-      const items = Object.entries(cart);
-      if (items.length === 0) {
-        alert("Carrinho vazio!");
-        return;
-      }
-      const message = `Olá! Gostaria de comprar:\n` + items.map(([item, data]) => `- ${item} x${data.qty} (€${(Number(data.price) * Number(data.qty)).toFixed(2)})`).join("\n");
-      const url = `https://wa.me/351936806335?text=${encodeURIComponent(message)}`;
-      window.open(url, "_blank");
+  document.addEventListener("DOMContentLoaded", updateCartView);
+
+  // --- Proteções de Código ---
+  // Desabilitar o clique direito
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
+  // Desabilitar F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+  document.addEventListener('keydown', event => {
+    if (
+      (event.key === 'F12') || // F12
+      (event.ctrlKey && event.shiftKey && event.key === 'I') || // Ctrl+Shift+I
+      (event.ctrlKey && event.shiftKey && event.key === 'J') || // Ctrl+Shift+J
+      (event.ctrlKey && event.key === 'u') // Ctrl+U
+    ) {
+      event.preventDefault();
     }
-
-    document.addEventListener("DOMContentLoaded", updateCartView);
-  </script>
+  });
+</script>
 </body>
 </html>

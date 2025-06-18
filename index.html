@@ -326,11 +326,11 @@
       /* Secção Equipa */
       /* Já está coberto pela regra .equipa img global para 100% largura e max-width
          Se quiser um ajuste específico para mobile (e.g., 90% do container), pode re-adicionar aqui:
-      .equipa img {
-        width: 90%;
-        height: auto;
-      }
-      */
+       .equipa img {
+         width: 90%;
+         height: auto;
+       }
+       */
 
       /* Newsletter e Sugestões */
       .newsletter-sugestoes {
@@ -624,7 +624,7 @@
       alert("Por favor, insira um email válido.");
       return;
     }
-    const mensagem = `Quero subscrever a newsletter.\nEmail: ${email}`;
+    const mensagem = `Quero subscrever a newsletter.\\nEmail: ${email}`;
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensagem)}`;
     window.open(whatsappUrl, '_blank');
   });
@@ -637,9 +637,25 @@
       alert("Por favor, preencha todos os campos.");
       return;
     }
-    const mensagem = `Sugestão recebida:\nNome: ${nome}\nMensagem: ${mensagemSugestao}`;
+    const mensagem = `Sugestão recebida:\\nNome: ${nome}\\nMensagem: ${mensagemSugestao}`;
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(mensagem)}`;
     window.open(whatsappUrl, '_blank');
+  });
+
+  // --- Proteções de Código ---
+  // Desabilitar o clique direito
+  document.addEventListener('contextmenu', event => event.preventDefault());
+
+  // Desabilitar F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+  document.addEventListener('keydown', event => {
+    if (
+      (event.key === 'F12') || // F12
+      (event.ctrlKey && event.shiftKey && event.key === 'I') || // Ctrl+Shift+I
+      (event.ctrlKey && event.shiftKey && event.key === 'J') || // Ctrl+Shift+J
+      (event.ctrlKey && event.key === 'u') // Ctrl+U
+    ) {
+      event.preventDefault();
+    }
   });
 </script>
 

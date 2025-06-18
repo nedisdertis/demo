@@ -27,17 +27,46 @@
       padding: 10px 0;
       z-index: 1000;
     }
+    /* Estilos para o container dos links de navegação */
+    .nav-links {
+      display: flex; /* Permite que os links fiquem lado a lado */
+      gap: 15px; /* Espaçamento entre os botões */
+      flex-wrap: wrap; /* Permite que os botões quebrem para a próxima linha em telas menores */
+      justify-content: center; /* Centraliza os botões */
+      padding: 0 10px; /* Pequeno padding nas laterais para não encostar na borda */
+    }
+
+    /* ESTILOS ALTERADOS PARA FAZER OS LINKS PARECEREM BOTÕES */
     .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 14px;
+      color: #fff; /* Cor do texto do botão */
+      text-decoration: none; /* Remove sublinhado */
       font-weight: 600;
       font-size: 1rem;
-      transition: color 0.3s ease;
+      padding: 8px 15px; /* Preenchimento interno para dar a aparência de botão */
+      background-color: #a08c5e; /* Fundo do botão (uma tonalidade um pouco mais escura que a nav) */
+      border: 1px solid #907f56; /* Borda sutil para profundidade */
+      border-radius: 5px; /* Cantos arredondados */
+      transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Transições suaves */
+      display: inline-flex; /* Permite que o padding e a largura funcionem corretamente */
+      align-items: center; /* Centraliza o texto verticalmente */
+      justify-content: center; /* Centraliza o texto horizontalmente */
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Sombra para dar mais destaque */
     }
+
     .nav-links a:hover {
-      color: #ffd54f;
+      color: #fff; /* Mantém a cor do texto no hover */
+      background-color: #8b6c00; /* Cor mais escura no hover */
+      transform: translateY(-2px); /* Efeito de "levantar" */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3); /* Sombra mais pronunciada no hover */
     }
+
+    .nav-links a:active {
+      background-color: #6a5300; /* Cor ainda mais escura ao clicar */
+      transform: translateY(0); /* Retorna à posição original */
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2); /* Sombra reduzida ao clicar */
+    }
+    /* FIM DOS ESTILOS ALTERADOS */
+
     header {
       padding: 60px 20px 40px; /* Default desktop padding */
       border-bottom: 1px solid #eee;
@@ -281,12 +310,14 @@
         padding: 10px;
       }
       .nav-links {
-        flex-direction: column;
+        flex-direction: column; /* Stack buttons vertically on small screens */
         align-items: center;
       }
       .nav-links a {
-        margin: 5px 0;
+        margin: 5px 0; /* Adjust margin for vertical stacking */
         font-size: 0.9rem;
+        width: calc(100% - 20px); /* Make buttons span most of the width */
+        max-width: 200px; /* Prevent them from becoming too wide */
       }
 
       /* Cabeçalho */
@@ -325,7 +356,7 @@
 
       /* Secção Equipa */
       /* Já está coberto pela regra .equipa img global para 100% largura e max-width
-         Se quiser um ajuste específico para mobile (e.g., 90% do container), pode re-adicionar aqui:
+        Se quiser um ajuste específico para mobile (e.g., 90% do container), pode re-adicionar aqui:
        .equipa img {
          width: 90%;
          height: auto;
@@ -392,15 +423,15 @@
     <div style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
       <a href="https://www.instagram.com/clinicas.jorge/p/DK4LWl3i5sa/" target="_blank" rel="noopener" title="Promoção no Instagram">
         <img src="promo-instagram.jpg" alt="Promoção da Clínica Jorge no Instagram"
-             style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+              style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
       </a>
       <a href="https://www.instagram.com/p/DKxZ-kggHFp/" target="_blank" rel="noopener" title="Promoção no Instagram">
         <img src="promo-instagram2.jpg" alt="Promoção da Clínica Jorge no Instagram"
-             style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+              style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
       </a>
       <a href="https://www.instagram.com/p/DK9jiXQiGy5/" target="_blank" rel="noopener" title="Promoção no Instagram">
         <img src="promo-instagram3.jpg" alt="Promoção da Clínica Jorge no Instagram"
-             style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+              style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
       </a>
     </div>
   </section>
@@ -410,15 +441,15 @@
     <div style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
       <a href="https://www.instagram.com/p/DKjd7HvCSQv/" target="_blank" rel="noopener" title="Promoção no Instagram">
         <img src="novidades-instagram.jpg" alt="Promoção da Clínica Jorge no Instagram"
-             style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+              style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
       </a>
       <a href="https://www.instagram.com/p/DKmjSiwizPU/" target="_blank" rel="noopener" title="Promoção no Instagram">
         <img src="novidades-instagram2.jpg" alt="Promoção da Clínica Jorge no Instagram"
-             style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+              style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
       </a>
       <a href="https://www.instagram.com/p/DKg1o13CVhJ/" target="_blank" rel="noopener" title="Promoção no Instagram">
         <img src="novidades-instagram3.jpg" alt="Promoção da Clínica Jorge no Instagram"
-             style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+              style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
       </a>
     </div>
   </section>
@@ -433,34 +464,24 @@
     <h3>Destaques</h3>
     <div style="display: flex; justify-content: center; gap: 15px; margin-top: 10px;">
       <img src="destaque.jpg"
-           style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+            style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
       <img src="destaque2.jpg"
-           style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+            style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
       <img src="destaque3.jpg"
-           style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
+            style="width: 200px; height: 250px; border-radius: 8px; cursor: pointer; object-fit: cover;" />
     </div>
   </section>
 
   <section class="contactos" id="contactos" style="text-align: center;">
     <h3>Contactos</h3>
-    <p>Telefone: <a href="+351 930 414 812" style="color:#c7af75;">+351 930 414 812</a></p>
+    <p>Telefone: <a href="tel:+351930414812" style="color:#c7af75;">+351 930 414 812</a></p>
     <p>Email: <a href="mailto:clincas.jorge@gmail.com" style="color:#c7af75;">clincas.jorge@gmail.com</a></p>
     <p>Morada: R. José Isidro dos Santos 1, 2625-084 Póvoa de Santa Iria</p>
 
     <div style="margin-top: 20px;">
       <button
         id="whatsappBtn"
-        style="
-          background-color: #25D366;
-          border: none;
-          color: white;
-          padding: 12px 24px;
-          font-size: 1.1rem;
-          font-weight: 700;
-          border-radius: 30px;
-          cursor: pointer;
-          box-shadow: 0 3px 6px rgba(0,0,0,0.15);
-        "
+        class="btn-whatsapp"
         aria-label="Contactar por WhatsApp"
       >
         <i class="fab fa-whatsapp"></i> WhatsApp
